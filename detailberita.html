@@ -1,0 +1,361 @@
+<!DOCTYPE html><html lang="id" class="light" style=""><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "on-tertiary-container": "#75b393",
+                        "surface-container-highest": "#e1e3e4",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#e2e2e2",
+                        "primary-container": "#1b4332",
+                        "on-tertiary-fixed": "#002114",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#d9dadb",
+                        "surface": "#f8f9fa",
+                        "on-background": "#191c1d",
+                        "inverse-primary": "#a5d0b9",
+                        "on-surface-variant": "#414844",
+                        "on-primary-container": "#86af99",
+                        "surface-bright": "#f8f9fa",
+                        "tertiary-fixed-dim": "#95d4b3",
+                        "outline": "#717973",
+                        "background": "#f8f9fa",
+                        "on-secondary-fixed-variant": "#454747",
+                        "on-tertiary-fixed-variant": "#0e5138",
+                        "outline-variant": "#c1c8c2",
+                        "inverse-on-surface": "#f0f1f2",
+                        "secondary": "#5d5f5f",
+                        "on-surface": "#191c1d",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#002d1c",
+                        "inverse-surface": "#2e3132",
+                        "surface-container-high": "#e7e8e9",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#dfe0e0",
+                        "surface-variant": "#e1e3e4",
+                        "primary-fixed-dim": "#a5d0b9",
+                        "on-primary-fixed": "#002114",
+                        "on-secondary-container": "#616363",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#00452e",
+                        "surface-tint": "#3f6653",
+                        "primary": "#012d1d",
+                        "primary-fixed": "#c1ecd4",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#274e3d",
+                        "tertiary-fixed": "#b1f0ce",
+                        "surface-container-low": "#f3f4f5",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#edeeef"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "base": "8px",
+                        "margin-mobile": "16px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "stack-lg": "32px",
+                        "gutter": "24px",
+                        "margin-desktop": "40px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    }catch(_e){}</script><meta charset="utf-8"></head><body class="bg-surface font-body-md text-on-surface">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-outline-variant shadow-sm">
+    <div class="max-w-container-max mx-auto px-4 sm:px-6 lg:px-margin-desktop">
+        <div class="flex items-center justify-between h-20">
+            
+            <div class="flex-shrink-0 flex items-center space-x-3">
+                <div class="w-10 h-10 bg-primary-fixed flex items-center justify-center text-primary font-bold shadow-inner rounded-xl">
+                    ☸
+                </div>
+                <div>
+                    <span class="block text-[10px] font-semibold tracking-wider text-primary uppercase">Situs Resmi</span>
+                    <span class="block text-lg font-bold text-primary tracking-tight">SATPOL PP</span>
+                </div>
+            </div>
+
+            <nav class="hidden lg:flex space-x-1">
+                <a href="index.html" class="px-3 py-2 rounded-lg text-sm font-medium text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors">Beranda</a>
+                
+                <div class="relative group">
+                    <button class="px-3 py-2 rounded-lg text-sm font-medium text-on-surface-variant hover:text-primary hover:bg-surface-container-low flex items-center space-x-1 transition-colors">
+                        <span class="">Profil PD</span>
+                        <span class="material-symbols-outlined text-[16px]">expand_more</span>
+                    </button>
+                    <div class="absolute left-0 w-56 pt-2 z-50 hidden group-hover:block">
+                        <div class="bg-white border border-outline-variant rounded-xl shadow-lg py-2">
+                            <a href="profilpimpinan.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Profil Pimpinan</a>
+                            <a href="sejarah.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Sejarah</a>
+                            <a href="struktur.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Struktur Organisasi</a>
+                            <a href="visimisi.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Visi dan Misi</a>
+                            <a href="tugasfungsi.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Tugas dan Fungsi</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="program.html" class="px-3 py-2 rounded-lg text-sm font-medium text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors">Program</a>
+                <a href="agenda.html" class="px-3 py-2 rounded-lg text-sm font-medium text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors">Agenda Pimpinan</a>
+
+                <div class="relative group">
+                    <button class="px-3 py-2 rounded-lg text-sm font-medium text-on-surface-variant hover:text-primary hover:bg-surface-container-low flex items-center space-x-1 transition-colors">
+                        <span class="">Publikasi</span>
+                        <span class="material-symbols-outlined text-[16px]">expand_more</span>
+                    </button>
+                    <div class="absolute left-0 w-48 pt-2 z-50 hidden group-hover:block">
+                        <div class="bg-white border border-outline-variant rounded-xl shadow-lg py-2">
+                            <a href="berita.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Berita</a>
+                            <a href="detailberita.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Detail Berita</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <button class="px-3 py-2 rounded-lg text-sm font-medium text-on-surface-variant hover:text-primary hover:bg-surface-container-low flex items-center space-x-1 transition-colors">
+                        <span class="">Dokumentasi</span>
+                        <span class="material-symbols-outlined text-[16px]">expand_more</span>
+                    </button>
+                    <div class="absolute left-0 w-48 pt-2 z-50 hidden group-hover:block">
+                        <div class="bg-white border border-outline-variant rounded-xl shadow-lg py-2">
+                            <a href="galerikegiatan.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Galeri Foto</a>
+                            <a href="video.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Video Kegiatan</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="hidden lg:flex items-center">
+                <a href="sarandankritik.html" class="inline-flex items-center justify-center px-5 py-2 rounded-lg text-label-md font-medium text-on-primary bg-primary hover:opacity-90 transition-opacity shadow-sm">
+                    Saran &amp; Kritik
+                </a>
+            </div>
+
+            <div class="flex lg:hidden">
+                <button class="inline-flex items-center justify-center p-2 rounded-xl text-on-surface-variant hover:bg-surface-container-low focus:outline-none">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+<main class="mt-20 pt-stack-lg max-w-container-max mx-auto px-margin-desktop">
+<!-- Breadcrumb -->
+<nav class="flex items-center gap-2 mb-stack-lg text-label-md text-secondary" aria-label="Breadcrumb"><a href="#" class="hover:text-primary transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">home</span> Beranda
+            </a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<a href="#" class="hover:text-primary transition-colors">Publikasi</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<a href="berita.html" class="hover:text-primary transition-colors">Berita</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-primary font-bold">Detail Berita</span></nav>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Main Content -->
+<article class="lg:col-span-8 bg-surface-container-lowest p-stack-md md:p-stack-lg rounded-xl border border-outline-variant shadow-sm">
+
+<div class="mb-stack-lg rounded-lg overflow-hidden group">
+<img src="https://lh3.googleusercontent.com/aida/AP1WRLs21f_GwIRrSIJwv9d2eOPAepf51QIzg18wLycnh9qKTWGjo3D9xgL40XXSBoKllsEdYdM9QcLK0gBOaSbqGlw_3qldr-u2QVxHyqJTGTOdmHPfTEN17aEbM3ZQo_ErQzWqbScGocydvahlM19DKBn5csJe1jEHViZbJwUEdJf30tcvAMP0ESgWBMF9Zv0HeWmBcHNOEBd6_OobKPNxCcYcWy3fAN7YPXaa1Bou_43aedElRoaw4FHyJg" alt="Petugas Satpol PP melakukan patroli ketertiban di area pusat kota Jakarta dengan seragam lengkap. Foto menunjukkan dedikasi dan profesionalisme aparat dalam memberikan pelayanan publik di lingkungan urban yang modern pada siang hari yang cerah." class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700">
+</div>
+<div class="article-content font-body-md leading-relaxed text-on-surface-variant">
+<p class="font-semibold text-lg text-primary">
+                        Jakarta, Satuan Polisi Pamong Praja (Satpol PP) terus meningkatkan intensitas pengawasan dan penertiban di wilayah pusat kota guna menjamin kenyamanan serta ketertiban masyarakat dalam beraktivitas.
+                    </p>
+<p class="">
+                        Langkah ini merupakan bagian dari komitmen berkelanjutan instansi untuk menciptakan lingkungan perkotaan yang kondusif. Menghadapi dinamika kota yang kian padat, personel di lapangan dibekali dengan pendekatan persuasif namun tetap tegas dalam menegakkan peraturan daerah.
+                    </p>
+<h2 class="">Penguatan Pengawasan</h2>
+<p class="">
+                        Penguatan pengawasan dilakukan melalui patroli terpadu yang menyisir area pedestrian, fasilitas publik, dan pusat perbelanjaan. Kepala Satpol PP menekankan bahwa kehadiran petugas bukan sekadar untuk menertibkan, melainkan untuk memberikan rasa aman kepada warga.
+                    </p>
+<p class="">
+                        "Kami mengedepankan aspek preventif. Dengan adanya petugas yang berjaga secara rutin, potensi pelanggaran ketertiban umum dapat diminimalisir sejak dini," ujar juru bicara Satpol PP Digital HQ dalam keterangan resminya.
+                    </p>
+<div class="my-stack-lg p-stack-md bg-surface-container border-l-4 border-primary italic">
+                        "Kunci dari ketertiban kota adalah ketaatan kolektif. Satpol PP hadir untuk memastikan instrumen hukum berjalan demi kepentingan bersama seluruh lapisan masyarakat."
+                    </div>
+<h2 class="">Kolaborasi dengan Masyarakat</h2>
+<p class="">
+                        Selain tindakan di lapangan, Satpol PP juga menggalakkan program kolaborasi dengan komunitas warga dan pelaku usaha lokal. Melalui kanal digital, masyarakat kini dapat melaporkan adanya gangguan ketertiban secara real-time.
+                    </p>
+<p class="">
+                        Sinergi ini terbukti efektif dalam memetakan titik-titik rawan yang memerlukan perhatian khusus. Dengan dukungan data yang akurat dari laporan publik, alokasi personel dapat dilakukan secara lebih strategis dan efisien. Kedepannya, program 'Satpol PP Sahabat Warga' akan terus diperluas ke wilayah-wilayah penyangga lainnya.
+                    </p>
+</div>
+<!-- Social Share -->
+<div class="mt-stack-lg pt-stack-md border-t border-outline-variant flex flex-col md:flex-row md:items-center justify-between gap-4">
+<span class="font-bold text-primary">Bagikan Berita:</span>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 px-4 py-2 bg-[#1877F2] text-white rounded hover:opacity-90 transition-opacity text-label-sm">
+<span class="material-symbols-outlined text-sm">share</span> Facebook
+                        </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-[#1DA1F2] text-white rounded hover:opacity-90 transition-opacity text-label-sm">
+<span class="material-symbols-outlined text-sm">share</span> X
+                        </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-[#25D366] text-white rounded hover:opacity-90 transition-opacity text-label-sm">
+<span class="material-symbols-outlined text-sm">chat</span> WhatsApp
+                        </button>
+<button class="flex items-center justify-center p-2 bg-surface-container-highest rounded hover:bg-outline-variant transition-colors">
+<span class="material-symbols-outlined text-secondary">link</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Sidebar -->
+<aside class="lg:col-span-4 space-y-stack-lg">
+<!-- Search Box -->
+<div class="bg-surface-container-lowest p-stack-md rounded-xl border border-outline-variant shadow-sm">
+<h3 class="font-label-md text-primary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">search</span> Cari Berita
+                    </h3>
+<div class="relative">
+<input type="text" placeholder="Kata kunci..." class="w-full pl-4 pr-12 py-3 bg-surface rounded border border-outline-variant focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all">
+<button class="absolute right-2 top-1/2 -translate-y-1/2 bg-primary text-on-primary p-2 rounded border-primary">
+<span class="material-symbols-outlined text-sm">search</span>
+</button>
+</div>
+</div>
+<!-- Recent News -->
+<div class="bg-surface-container-lowest p-stack-md rounded-xl border border-outline-variant shadow-sm">
+<h3 class="font-label-md text-primary mb-6 flex items-center gap-2 border-b border-outline-variant pb-2">
+<span class="material-symbols-outlined text-primary">newspaper</span> Berita Terbaru
+                    </h3>
+<div class="space-y-6">
+<!---->
+<a class="group flex gap-4" href="#">
+<div class="w-24 h-16 shrink-0 rounded overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500" data-alt="A professional government officer in an emerald green uniform standing in front of a modern urban building. Soft natural daylight illuminates the scene, creating a sense of transparency and authority. The photography style is high-definition, corporate, and trustworthy." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB3lGoSdeJJPqFq-03U2t4e55aaFv7jKcaq3Cm7LnY8_3TldPdFmmWpIBE8BVdD1-gCaKCI4SSjc1KnLemb3y55zpBJ3JiNncG-NO2MnxY0kxFbKSLL6_QHpm4_O9_ggsHhA0cCiesA02K_7Haj7zW1sVRo2fpWnKuTyO_AqzAMPGsaxUK3TTJlbMFaGl87dXhBQBXiCDNauin01mgiRYusslCgYx9ThX8ssfx6SynwjPSczKq91bfv')"></div>
+</div>
+<div class="flex-1">
+<h4 class="text-label-sm font-bold text-on-surface line-clamp-2 group-hover:text-primary transition-colors">Peningkatan Kualitas SDM Melalui Pelatihan Integritas</h4>
+<span class="text-[10px] text-secondary">23 Okt 2024</span>
+</div>
+</a>
+<!-- News Item 2 -->
+<a class="group flex gap-4" href="#">
+<div class="w-24 h-16 shrink-0 rounded overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500" data-alt="Close-up of a digital tablet showing a government service application with a map and reporting tools. The device is held by an officer in a crisp uniform. Background is a bright, professional office with institutional green accents and soft lighting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBqc07HfPveHU3ZZLCmvIdW2VkzuCAUUOXsznqRSBfTUnBFlCyqtv4o38NUOYtxxkpbyoGNzjgP77WWuJGEG3p7bbPHAZGskSzxu-jz0mpI9w3Aicigjcsp6TkFIH35cETLHQhUP-fyraeiX4eTdmdi4YA5hmS41a7DaqB-YMFrXY7Q-ZYbq8l2BWJfSzhaDPemnzxa2oAjeTiNuxHpQKYKgJUSozbdtqWhVT1IskCGljGsl8VMmTRq')"></div>
+</div>
+<div class="flex-1">
+<h4 class="text-label-sm font-bold text-on-surface line-clamp-2 group-hover:text-primary transition-colors">Peluncuran Aplikasi Lapor Online Tahap II</h4>
+<span class="text-[10px] text-secondary">22 Okt 2024</span>
+</div>
+</a>
+<!-- News Item 3 -->
+<a class="group flex gap-4" href="#">
+<div class="w-24 h-16 shrink-0 rounded overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500" data-alt="A structured city plaza with clean paved surfaces and modern architectural lines. People are walking safely in the pedestrian zone. The lighting is balanced, showcasing a well-maintained and orderly public space. Institutional colors of green and white are subtly integrated into the environment." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDMrFbLopPEAhKfn-xUpLdjuyyMTa0wX6mjm5wAPi38aREhUEnGQUaAFf4op-VVfhdViK61dAz8NRqUbdVNMX36qFNgKdw7tH-uBYKYS2igiGhxIr6YGpKaiWkpYjzSfWDmwsnVg1rSQ5_yChSAZIibhkxcLZUdHZ9-wqU47AEJpUFqqvVz4dNkKfe0PixwHQxzMjWyuHKL8ZC5xeGU1xJSIrFG-Di8-VUZidmyLjCgpBbL126Zl6fK')"></div>
+</div>
+<div class="flex-1">
+<h4 class="text-label-sm font-bold text-on-surface line-clamp-2 group-hover:text-primary transition-colors">Penertiban Reklame Ilegal di Kawasan Protokol</h4>
+<span class="text-[10px] text-secondary">20 Okt 2024</span>
+</div>
+</a>
+</div>
+<button class="w-full mt-6 py-2 border border-primary text-primary font-bold text-label-sm rounded hover:bg-primary hover:text-on-primary transition-all">Lihat Semua Berita</button>
+</div>
+<!-- Category Cloud -->
+<div class="bg-surface-container-lowest p-stack-md rounded-xl border border-outline-variant shadow-sm">
+<h3 class="font-label-md text-primary mb-4 flex items-center gap-2 border-b border-outline-variant pb-2">
+<span class="material-symbols-outlined text-primary">bookmarks</span> Kategori
+                    </h3>
+<div class="flex flex-wrap gap-2"><a class="px-3 py-1 bg-primary-fixed text-on-primary-fixed text-label-sm rounded-full hover:bg-primary hover:text-on-primary transition-colors" href="#">Berita Utama</a>
+<a class="px-3 py-1 bg-primary-fixed text-on-primary-fixed text-label-sm rounded-full hover:bg-primary hover:text-on-primary transition-colors" href="#">Pengumuman</a>
+<a class="px-3 py-1 bg-primary-fixed text-on-primary-fixed text-label-sm rounded-full hover:bg-primary hover:text-on-primary transition-colors" href="#">Kegiatan</a>
+<a class="px-3 py-1 bg-primary-fixed text-on-primary-fixed text-label-sm rounded-full hover:bg-primary hover:text-on-primary transition-colors" href="#">Regulasi</a>
+<a class="px-3 py-1 bg-primary-fixed text-on-primary-fixed text-label-sm rounded-full hover:bg-primary hover:text-on-primary transition-colors" href="#">Informasi Publik</a>
+<a class="px-3 py-1 bg-primary-fixed text-on-primary-fixed text-label-sm rounded-full hover:bg-primary hover:text-on-primary transition-colors" href="#">Siaran Pers</a></div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-stack-lg bg-surface-container-highest border-t border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter max-w-container-max mx-auto px-margin-desktop py-stack-lg">
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-primary mb-4">Satpol PP Digital HQ</h2>
+<p class="text-secondary-fixed-variant text-body-md max-w-md mb-6">
+                    Menjaga ketentraman, ketertiban umum, dan perlindungan masyarakat dengan profesionalisme dan integritas tinggi.
+                </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary hover:scale-110 transition-transform" href="#">
+<span class="material-symbols-outlined">public</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary hover:scale-110 transition-transform" href="#">
+<span class="material-symbols-outlined">alternate_email</span>
+</a>
+</div>
+</div>
+<div class="flex flex-col md:items-end justify-between">
+<nav class="flex flex-wrap gap-x-gutter gap-y-2 mb-stack-md text-label-md">
+<a class="text-secondary-fixed-variant hover:text-primary transition-colors" href="#">Kebijakan Privasi</a>
+<a class="text-secondary-fixed-variant hover:text-primary transition-colors" href="#">Syarat &amp; Ketentuan</a>
+<a class="text-secondary-fixed-variant hover:text-primary transition-colors" href="#">Peta Situs</a>
+<a class="text-secondary-fixed-variant hover:text-primary transition-colors" href="#">Aksesibilitas</a>
+</nav>
+<p class="font-label-md text-label-md text-secondary-fixed-variant opacity-70">
+                    © 2024 Satuan Polisi Pamong Praja. All Rights Reserved.
+                </p>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for scroll effects
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md');
+                header.classList.remove('shadow-sm');
+            } else {
+                header.classList.add('shadow-sm');
+                header.classList.remove('shadow-md');
+            }
+        });
+
+        // Add smooth scale effect to active news links
+        document.querySelectorAll('article a, aside a').forEach(link => {
+            link.addEventListener('mousedown', () => {
+                link.classList.add('scale-95');
+                link.style.transition = 'transform 0.15s ease';
+            });
+            link.addEventListener('mouseup', () => {
+                link.classList.remove('scale-95');
+            });
+            link.addEventListener('mouseleave', () => {
+                link.classList.remove('scale-95');
+            });
+        });
+    </script>
+
+</body></html>

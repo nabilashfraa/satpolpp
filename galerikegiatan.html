@@ -1,0 +1,420 @@
+<!DOCTYPE html><html lang="id" style=""><svg class="inline-defs-container" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"></svg><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Galeri Kegiatan - Keluarga Berencana Musi Banyuasin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&amp;family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .active-dot::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background-color: currentColor;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#d8e7d8",
+                        "inverse-primary": "#a2d5ab",
+                        "tertiary": "#9e3d00",
+                        "on-surface": "#1a1c1e",
+                        "primary-fixed": "#d5f3da",
+                        "on-tertiary-fixed": "#351000",
+                        "primary-container": "#1B4332",
+                        "outline": "#717971",
+                        "primary-fixed-dim": "#a2d5ab",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#f8faf8",
+                        "surface-container-low": "#f2f4f2",
+                        "primary": "#1B4332",
+                        "inverse-surface": "#2e312e",
+                        "tertiary-fixed": "#ffdbcc",
+                        "surface-dim": "#d9dbd9",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#1a1c1e",
+                        "on-tertiary-fixed-variant": "#7c2e00",
+                        "secondary-fixed-dim": "#aacab0",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#004d1c",
+                        "secondary": "#2D6A4F",
+                        "surface-container-high": "#e7e9e7",
+                        "surface-tint": "#1B4332",
+                        "surface-container": "#edefed",
+                        "on-tertiary": "#ffffff",
+                        "outline-variant": "#c1c9c1",
+                        "background": "#f8faf8",
+                        "tertiary-container": "#c64f00",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e0e4e0",
+                        "secondary-container": "#40916C",
+                        "inverse-on-surface": "#f0f1f0",
+                        "on-surface-variant": "#414941",
+                        "on-primary-container": "#ffffff",
+                        "surface": "#f8faf8",
+                        "surface-container-highest": "#e0e4e0",
+                        "on-primary-fixed": "#00210a",
+                        "tertiary-fixed-dim": "#ffb695",
+                        "on-secondary-container": "#ffffff",
+                        "on-secondary-fixed": "#00210a",
+                        "on-primary-fixed-variant": "#0e5229",
+                        "on-tertiary-container": "#fffbff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "unit": "8px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "title-md": ["Hanken Grotesk"],
+                        "label-sm": ["JetBrains Mono"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md overflow-x-hidden">
+<!-- Top Bar Component -->
+<section class="bg-[#1B4332] text-on-secondary py-2 hidden md:block">
+<div class="max-w-container-max mx-auto px-margin-desktop flex justify-between items-center">
+<div class="flex gap-6 font-body-md text-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">call</span>
+<span class="">021-123-456</span>
+</div>
+<div class="flex items-center gap-2 border-l border-on-secondary/20 pl-6">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+<span class="">kontak@dppkb.go.id</span>
+</div>
+<div class="flex items-center gap-2 border-l border-on-secondary/20 pl-6">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span class="">08:00 - 16:00</span>
+</div>
+</div>
+<div class="flex gap-4">
+<a class="hover:opacity-80 transition-opacity" href="#"><span class="material-symbols-outlined">face_nod</span></a>
+<a class="hover:opacity-80 transition-opacity" href="#"><span class="material-symbols-outlined text-[20px]">share</span></a>
+<a class="hover:opacity-80 transition-opacity" href="#"><span class="material-symbols-outlined text-[20px]">play_circle</span></a>
+</div>
+</div>
+</section>
+<!-- TopAppBar Navigation -->
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-outline-variant shadow-sm">
+    <div class="max-w-container-max mx-auto px-4 sm:px-6 lg:px-margin-desktop">
+        <div class="flex items-center justify-between h-20">
+            
+            <div class="flex-shrink-0 flex items-center space-x-3">
+                <div class="w-10 h-10 bg-primary-fixed flex items-center justify-center text-primary font-bold shadow-inner rounded-xl">
+                    ☸
+                </div>
+                <div>
+                    <span class="block text-[10px] font-semibold tracking-wider text-primary uppercase">Situs Resmi</span>
+                    <span class="block text-lg font-bold text-primary tracking-tight">SATPOL PP</span>
+                </div>
+            </div>
+
+            <nav class="hidden lg:flex space-x-1">
+                <a href="index.html" class="px-3 py-2 rounded-lg text-sm font-medium text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors">Beranda</a>
+                
+                <div class="relative group">
+                    <button class="px-3 py-2 rounded-lg text-sm font-medium text-on-surface-variant hover:text-primary hover:bg-surface-container-low flex items-center space-x-1 transition-colors">
+                        <span class="">Profil PD</span>
+                        <span class="material-symbols-outlined text-[16px]">expand_more</span>
+                    </button>
+                    <div class="absolute left-0 w-56 pt-2 z-50 hidden group-hover:block">
+                        <div class="bg-white border border-outline-variant rounded-xl shadow-lg py-2">
+                            <a href="profilpimpinan.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Profil Pimpinan</a>
+                            <a href="sejarah.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Sejarah</a>
+                            <a href="struktur.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Struktur Organisasi</a>
+                            <a href="visimisi.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Visi dan Misi</a>
+                            <a href="tugasfungsi.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Tugas dan Fungsi</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="program.html" class="px-3 py-2 rounded-lg text-sm font-medium text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors">Program</a>
+                <a href="agenda.html" class="px-3 py-2 rounded-lg text-sm font-medium text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors">Agenda Pimpinan</a>
+
+                <div class="relative group">
+                    <button class="px-3 py-2 rounded-lg text-sm font-medium text-on-surface-variant hover:text-primary hover:bg-surface-container-low flex items-center space-x-1 transition-colors">
+                        <span class="">Publikasi</span>
+                        <span class="material-symbols-outlined text-[16px]">expand_more</span>
+                    </button>
+                    <div class="absolute left-0 w-48 pt-2 z-50 hidden group-hover:block">
+                        <div class="bg-white border border-outline-variant rounded-xl shadow-lg py-2">
+                            <a href="berita.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Berita</a>
+                            <a href="detailberita.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Detail Berita</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <button class="px-3 py-2 rounded-lg text-sm font-medium text-on-surface-variant hover:text-primary hover:bg-surface-container-low flex items-center space-x-1 transition-colors">
+                        <span class="">Dokumentasi</span>
+                        <span class="material-symbols-outlined text-[16px]">expand_more</span>
+                    </button>
+                    <div class="absolute left-0 w-48 pt-2 z-50 hidden group-hover:block">
+                        <div class="bg-white border border-outline-variant rounded-xl shadow-lg py-2">
+                            <a href="galerikegiatan.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Galeri Foto</a>
+                            <a href="video.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Video Kegiatan</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="hidden lg:flex items-center">
+                <a href="sarandankritik.html" class="inline-flex items-center justify-center px-5 py-2 rounded-lg text-label-md font-medium text-on-primary bg-primary hover:opacity-90 transition-opacity shadow-sm">
+                    Saran &amp; Kritik
+                </a>
+            </div>
+
+            <div class="flex lg:hidden">
+                <button class="inline-flex items-center justify-center p-2 rounded-xl text-on-surface-variant hover:bg-surface-container-low focus:outline-none">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Hero Section -->
+<main>
+<section class="bg-gradient-to-br from-[#1B4332] to-[#2D6A4F] py-16 md:py-20 text-on-primary relative overflow-hidden">
+<!-- Background Decoration -->
+<div class="absolute inset-0 opacity-10">
+<svg height="100%" preserveAspectRatio="none" viewBox="0 0 100 100" width="100%">
+<pattern height="10" id="grid" patternUnits="userSpaceOnUse" width="10">
+<path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" stroke-width="0.5"></path>
+</pattern>
+<rect fill="url(#grid)" height="100%" width="100%"></rect>
+</svg>
+</div>
+<div class="max-w-container-max mx-auto px-margin-desktop relative z-10 text-center">
+<h1 class="font-display-lg text-display-lg mb-6 max-w-3xl mx-auto text-white">Galeri Kegiatan DPPKB</h1>
+<p class="font-body-lg text-body-lg text-white/90 max-w-2xl mx-auto leading-relaxed">
+                    Mendokumentasikan setiap langkah kami dalam mewujudkan keluarga berkualitas dan pertumbuhan penduduk yang seimbang di tahun 2026.
+                </p>
+</div>
+</section>
+<!-- Gallery Content Section -->
+<section class="py-16 md:py-24 max-w-container-max mx-auto px-margin-desktop">
+<!-- Filter / Tab Navigation -->
+<div class="flex items-center justify-between mb-12">
+<div class="flex gap-4">
+<span class="font-label-sm text-label-sm text-[#1B4332] bg-[#1B4332]/10 px-4 py-2 rounded-full flex items-center gap-2">
+<span class="w-2 h-2 bg-[#1B4332] rounded-full animate-pulse"></span>
+                        UPDATE TERBARU
+                    </span>
+</div>
+<div class="flex gap-2">
+<button class="p-2 border border-outline-variant rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">grid_view</span>
+</button>
+<button class="p-2 border border-outline-variant rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">list</span>
+</button>
+</div>
+</div>
+<!-- Bento-ish Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<article class="group bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A professional high-resolution photograph showing a community health outreach program in Musi Banyuasin. Local government officials in neat uniforms are interacting with families in a bright, outdoor community center. The lighting is warm and natural, conveying a sense of helpfulness and civic duty. The colors are dominated by government blues and clean whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoQRi1zFibTbx3NJqo-ZSMkQJ4uTck6CxnZVZxL67D8CE94VsUseJwx91i6WXndrKIMh4bxTU_vvCMITTOlmFIldWcBrMPtx2sUd-Ya5f3ZULPYtVWlg4u8QubARg5yzMBoqvkXy144OJ70J3kgLGXRcnV5cr2WeUzRsAfeSsBBwEdZ5oxqUEIOhjY_sxgMIuawj_9E3QYaN-SHq4P6K_NoIltHS3kL8mwVa6IR1XN_vIfeh7ZFCLJFQormbqcH7qSGBJad77r3g8">
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-primary font-label-sm text-label-sm shadow-sm">
+                            12 Jan 2024
+                        </div>
+</div>
+<div class="p-6">
+<h3 class="font-title-md text-title-md text-on-surface mb-3 group-hover:text-primary transition-colors">Sosialisasi Pencegahan Stunting di Kecamatan Sekayu</h3>
+<p class="text-on-surface-variant line-clamp-2">Kegiatan edukasi kepada ibu hamil dan menyusui mengenai pentingnya gizi seimbang bagi tumbuh kembang anak.</p>
+<div class="mt-6 flex items-center justify-between border-t border-outline-variant pt-4">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-white bg-primary-container text-[10px] flex items-center justify-center font-bold text-white">SP</div>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-secondary-container text-[10px] flex items-center justify-center font-bold text-white">MU</div>
+</div>
+<a class="font-bold flex items-center gap-1 group-hover:gap-2 transition-all text-[#1B4332]" href="#">
+                                Lihat Detail <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="group bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A documentary style photograph of a formal government meeting inside a modern administrative hall in Musi Banyuasin. Professional men and women in batik and official uniforms are seated around a polished U-shaped table. Large presentation screens show population data charts. The atmosphere is serious and focused, with high-key corporate lighting and a clean, organized aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCgD6jxdBMd0Szb6OC_JhUC7j_zrUpak2fPn_Y9x5n5Usq6WGTNxQFWfHxSOxt8R4YdOy3I8kFOAIyxMDf7GFBPBhoy22GjOFayXhZJMF5ekz5ZMSCYL8FuFuk1Q3dBt3H56e9OU-blUadMVlmR0jJtvfgvvd2ifwLDBVvleQ_VZBO6AFjms-2cAiZavHtXez2UOhMmtovvw2MTzSl3ZPGYDaP5q5_9y3eOOmOljacIRbcxDfc6_44gcCtBpyF6OPOA2bzcMnf5Hk">
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-primary font-label-sm text-label-sm shadow-sm">
+                            10 Jan 2024
+                        </div>
+</div>
+<div class="p-6">
+<h3 class="font-title-md text-title-md text-on-surface mb-3 group-hover:text-primary transition-colors">Rapat Koordinasi Pengendalian Penduduk Semester I</h3>
+<p class="text-on-surface-variant line-clamp-2">Evaluasi pencapaian program Bangga Kencana dan penetapan target strategis untuk kuartal mendatang.</p>
+<div class="mt-6 flex items-center justify-between border-t border-outline-variant pt-4">
+<div class="flex items-center gap-2 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-[18px]">photo_library</span>
+                                15 Foto
+                            </div>
+<a class="font-bold flex items-center gap-1 group-hover:gap-2 transition-all text-[#1B4332]" href="#">
+                                Lihat Detail <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="group bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300">
+<div class="relative aspect-[4/3] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A vibrant outdoor shot of a family day event organized by a government agency in a lush green park in Musi Banyuasin. Children are playing, and parents are engaged in educational workshops under white tents. The scene is full of life and color, with bright blue skies and saturated greens. The style is upbeat and community-centric, emphasizing the agency's role in family welfare." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbAiB1flGHoKSpKK51aCZdku0gjZBokHEP-4qVvencuqgldbUDUCICcly8P5MboxiK5UdkXu0eCLlDq_LXd7mZbVD1dGRNgD4H0C9KnwANYkVlGYUzItUTVorczxKM6TZQAoYqyeWX2cPoR8TU2wTUTTkeCNlMBiWmblbsZwGXa3EcSuR508eKIa0odMZonAKiN5W84iKUqKlwjrTlp03Y51INROepBjpxTHeM2ufMUe14ZsYFBHRO3pjoj51VibXc07-oRn7exKM">
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-primary font-label-sm text-label-sm shadow-sm">
+                            05 Jan 2024
+                        </div>
+</div>
+<div class="p-6">
+<h3 class="font-title-md text-title-md text-on-surface mb-3 group-hover:text-primary transition-colors">Peluncuran Kampung KB Desa Berdaya</h3>
+<p class="text-on-surface-variant line-clamp-2">Peresmian percontohan desa mandiri yang mengintegrasikan program kependudukan dengan pemberdayaan ekonomi.</p>
+<div class="mt-6 flex items-center justify-between border-t border-outline-variant pt-4">
+<div class="flex items-center gap-2 text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-[18px]">photo_library</span>
+                                8 Foto
+                            </div>
+<a class="font-bold flex items-center gap-1 group-hover:gap-2 transition-all text-[#1B4332]" href="#">
+                                Lihat Detail <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination -->
+<div class="mt-16 flex flex-col md:flex-row justify-between items-center gap-6">
+<p class="text-on-surface-variant font-body-md">Showing 1 to 3 of 4 results</p>
+<nav class="flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg bg-[#1B4332] text-white font-bold border border-[#1B4332]">
+                        1
+                    </button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container hover:text-primary transition-colors">
+                        2
+                    </button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</nav>
+</div>
+</section>
+</main>
+<!-- Footer Component -->
+<footer class="bg-surface-container-highest text-on-surface py-16 border-t border-outline-variant">
+<div class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-4">
+<h2 class="font-headline-lg text-headline-lg font-semibold text-primary mb-6">Satpol PP Muba</h2>
+<p class="text-on-surface-variant mb-6 leading-relaxed">
+                    Menegakkan peraturan daerah dan menyelenggarakan ketertiban umum serta ketentraman masyarakat di Kabupaten Musi Banyuasin secara profesional dan humanis.
+                </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center hover:bg-primary hover:text-white transition-all" href="#"><span class="material-symbols-outlined text-[20px]">share</span></a>
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center hover:bg-primary hover:text-white transition-all" href="#"><span class="material-symbols-outlined text-[20px]">public</span></a>
+</div>
+</div>
+<div class="md:col-span-2">
+<h4 class="font-bold text-lg mb-6">Tautan Cepat</h4>
+<ul class="flex flex-col gap-3">
+<li class=""><a class="text-on-surface-variant hover:text-primary transition-colors" href="index.html">Beranda</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary transition-colors" href="profilpimpinan.html">Profil PD</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary transition-colors" href="program.html">Program</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary transition-colors" href="berita.html">Berita</a></li>
+</ul>
+</div>
+<div class="md:col-span-3">
+<h4 class="font-bold text-lg mb-6">Informasi</h4>
+<ul class="flex flex-col gap-3">
+<li class=""><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Kebijakan Privasi</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Kontak Kami</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Peta Situs</a></li>
+</ul>
+</div>
+<div class="md:col-span-3">
+<h4 class="font-bold text-lg mb-6">Alamat Kantor</h4>
+<p class="text-on-surface-variant leading-relaxed">
+                    Jl. Kolonel Wahid Udin, Sekayu, <br>
+                    Kabupaten Musi Banyuasin, <br>
+                    Sumatera Selatan 30711
+                </p>
+<div class="mt-6 pt-6 border-t border-outline-variant">
+<button class="bg-[#1B4332] text-white px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-[#557B67] transition-colors shadow-sm"><span class="material-symbols-outlined">campaign</span>Lapor Sekarang</button>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-desktop mt-16 pt-8 border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-on-surface-variant text-sm">© 2024 Satpol PP Musi Banyuasin. Hak Cipta Dilindungi.</p>
+<div class="flex gap-6 text-sm text-on-surface-variant">
+<span class="">Sekayu, Sumatera Selatan</span>
+<span class="material-symbols-outlined text-[14px]">circle</span>
+<span class="">Indonesia</span>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for gallery cards
+        document.querySelectorAll('article').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.classList.add('shadow-xl', '-translate-y-1');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('shadow-xl', '-translate-y-1');
+            });
+        });
+
+        // Sticky Header Transparency Logic
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('py-0');
+            } else {
+                header.classList.remove('py-0');
+            }
+        });
+    </script>
+
+
+</body></html>

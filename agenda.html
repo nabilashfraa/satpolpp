@@ -1,0 +1,489 @@
+<!DOCTYPE html><html class="light" lang="id"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Agenda Pimpinan - Satpol PP Digital</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed": "#002114",
+                      "primary-container": "#1b4332",
+                      "outline-variant": "#c1c8c2",
+                      "secondary": "#5d5f5f",
+                      "surface-container-low": "#f3f4f5",
+                      "on-primary": "#ffffff",
+                      "on-primary-fixed": "#002114",
+                      "on-surface": "#191c1d",
+                      "on-error": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "surface-container": "#edeeef",
+                      "on-secondary-container": "#616363",
+                      "on-error-container": "#93000a",
+                      "secondary-container": "#dfe0e0",
+                      "on-secondary": "#ffffff",
+                      "surface-variant": "#e1e3e4",
+                      "surface-container-lowest": "#ffffff",
+                      "error": "#ba1a1a",
+                      "surface-bright": "#f8f9fa",
+                      "tertiary": "#002d1c",
+                      "on-tertiary-fixed-variant": "#0e5138",
+                      "surface-tint": "#3f6653",
+                      "secondary-fixed-dim": "#c6c6c7",
+                      "primary": "#012d1d",
+                      "surface-dim": "#d9dadb",
+                      "on-background": "#191c1d",
+                      "on-tertiary-container": "#75b393",
+                      "on-primary-container": "#86af99",
+                      "on-primary-fixed-variant": "#274e3d",
+                      "surface-container-high": "#e7e8e9",
+                      "surface": "#f8f9fa",
+                      "primary-fixed-dim": "#a5d0b9",
+                      "inverse-on-surface": "#f0f1f2",
+                      "secondary-fixed": "#e2e2e2",
+                      "on-surface-variant": "#414844",
+                      "inverse-surface": "#2e3132",
+                      "outline": "#717973",
+                      "background": "#f8f9fa",
+                      "tertiary-fixed": "#b1f0ce",
+                      "on-secondary-fixed-variant": "#454747",
+                      "on-secondary-fixed": "#1a1c1c",
+                      "surface-container-highest": "#e1e3e4",
+                      "error-container": "#ffdad6",
+                      "tertiary-fixed-dim": "#95d4b3",
+                      "inverse-primary": "#a5d0b9",
+                      "tertiary-container": "#00452e",
+                      "primary-fixed": "#c1ecd4"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-desktop": "40px",
+                      "gutter": "24px",
+                      "container-max": "1280px",
+                      "stack-sm": "8px",
+                      "stack-lg": "32px",
+                      "base": "8px",
+                      "stack-md": "16px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "headline-xl": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+        }
+        .calendar-day {
+            min-height: 120px;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+<!-- Standardized Navigation Header -->
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-outline-variant shadow-sm">
+    <div class="max-w-container-max mx-auto px-4 sm:px-6 lg:px-margin-desktop">
+        <div class="flex items-center justify-between h-20">
+            
+            <div class="flex-shrink-0 flex items-center space-x-3">
+                <div class="w-10 h-10 bg-primary-fixed flex items-center justify-center text-primary font-bold shadow-inner rounded-xl">
+                    🛡️
+                </div>
+                <div>
+                    <span class="block text-[10px] font-semibold tracking-wider text-primary uppercase">Situs Resmi</span>
+                    <span class="block text-lg font-bold text-primary tracking-tight">SATPOL PP</span>
+                </div>
+            </div>
+
+            <nav class="hidden lg:flex space-x-1">
+                <a href="index.html" class="px-3 py-2 rounded-lg text-sm font-medium text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors">Beranda</a>
+                
+                <div class="relative group">
+                    <button class="px-3 py-2 rounded-lg text-sm font-medium text-on-surface-variant hover:text-primary hover:bg-surface-container-low flex items-center space-x-1 transition-colors">
+                        <span class="">Profil PD</span>
+                        <span class="material-symbols-outlined text-[16px]">expand_more</span>
+                    </button>
+                    <div class="absolute left-0 w-56 pt-2 z-50 hidden group-hover:block">
+                        <div class="bg-white border border-outline-variant rounded-xl shadow-lg py-2">
+                            <a href="profilpimpinan.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Profil Pimpinan</a>
+                            <a href="sejarah.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Sejarah</a>
+                            <a href="struktur.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Struktur Organisasi</a>
+                            <a href="visimisi.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Visi dan Misi</a>
+                            <a href="tugasfungsi.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Tugas dan Fungsi</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="program.html" class="px-3 py-2 rounded-lg text-sm font-medium text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors">Program</a>
+                <a href="agenda.html" class="px-3 py-2 rounded-lg text-sm font-medium text-primary bg-primary/5">Agenda Pimpinan</a>
+
+                <div class="relative group">
+                    <button class="px-3 py-2 rounded-lg text-sm font-medium text-on-surface-variant hover:text-primary hover:bg-surface-container-low flex items-center space-x-1 transition-colors">
+                        <span class="">Publikasi</span>
+                        <span class="material-symbols-outlined text-[16px]">expand_more</span>
+                    </button>
+                    <div class="absolute left-0 w-48 pt-2 z-50 hidden group-hover:block">
+                        <div class="bg-white border border-outline-variant rounded-xl shadow-lg py-2">
+                            <a href="berita.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Berita</a>
+                            <a href="detailberita.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Detail Berita</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <button class="px-3 py-2 rounded-lg text-sm font-medium text-on-surface-variant hover:text-primary hover:bg-surface-container-low flex items-center space-x-1 transition-colors">
+                        <span class="">Dokumentasi</span>
+                        <span class="material-symbols-outlined text-[16px]">expand_more</span>
+                    </button>
+                    <div class="absolute left-0 w-48 pt-2 z-50 hidden group-hover:block">
+                        <div class="bg-white border border-outline-variant rounded-xl shadow-lg py-2">
+                            <a href="galerikegiatan.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Galeri Foto</a>
+                            <a href="video.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Video Kegiatan</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="hidden lg:flex items-center">
+                <a href="sarandankritik.html" class="inline-flex items-center justify-center px-5 py-2 rounded-lg text-label-md font-medium text-on-primary bg-primary hover:opacity-90 transition-opacity shadow-sm">
+                    Saran &amp; Kritik
+                </a>
+            </div>
+
+            <div class="flex lg:hidden">
+                <button class="inline-flex items-center justify-center p-2 rounded-xl text-on-surface-variant hover:bg-surface-container-low focus:outline-none">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Spacer to prevent content overlap with fixed header -->
+
+<!-- Banner Section -->
+<section class="relative w-full bg-secondary py-24 overflow-hidden">
+<!-- Background Decoration -->
+<div class="absolute inset-0 opacity-10">
+<div class="absolute -right-20 -top-20 w-96 h-96 bg-tertiary-fixed rounded-full blur-3xl"></div>
+<div class="absolute -left-20 -bottom-20 w-80 h-80 bg-primary-fixed-dim rounded-full blur-3xl"></div>
+</div>
+<div class="relative max-w-container-max mx-auto px-margin-desktop">
+<div class="inline-flex items-center gap-2 bg-on-primary-fixed-variant text-primary-fixed px-4 py-1.5 rounded-full mb-6">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+<span class="font-label-sm text-label-sm tracking-wider uppercase">Transparansi Kelembagaan</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-primary mb-4">Agenda Pimpinan</h1>
+<p class="text-on-primary opacity-80 max-w-2xl font-body-lg text-body-lg">
+                Pantau jadwal kegiatan dan agenda resmi pimpinan Satpol PP dalam menjalankan tugas penegakan Perda, ketertiban umum, dan perlindungan masyarakat.
+            </p>
+</div>
+</section>
+<!-- Main Content Layout -->
+<main class="max-w-container-max mx-auto px-margin-desktop py-stack-lg flex flex-col lg:flex-row gap-gutter">
+<!-- Left Column: Calendar -->
+<div class="w-full lg:w-2/3">
+<div class="bg-white border border-outline-variant rounded-xl shadow-sm overflow-hidden">
+<div class="p-stack-md border-b border-outline-variant flex justify-between items-center bg-surface-bright">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary">Oktober 2023</h2>
+<p class="text-on-surface-variant font-label-sm text-label-sm">Kalender Kegiatan Pimpinan</p>
+</div>
+<div class="flex gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="calendar-grid border-b border-outline-variant">
+<!-- Day Headers -->
+<div class="py-3 text-center font-label-md text-label-md text-on-surface-variant border-r border-outline-variant uppercase">Min</div>
+<div class="py-3 text-center font-label-md text-label-md text-on-surface-variant border-r border-outline-variant uppercase">Sen</div>
+<div class="py-3 text-center font-label-md text-label-md text-on-surface-variant border-r border-outline-variant uppercase">Sel</div>
+<div class="py-3 text-center font-label-md text-label-md text-on-surface-variant border-r border-outline-variant uppercase">Rab</div>
+<div class="py-3 text-center font-label-md text-label-md text-on-surface-variant border-r border-outline-variant uppercase">Kam</div>
+<div class="py-3 text-center font-label-md text-label-md text-on-surface-variant border-r border-outline-variant uppercase">Jum</div>
+<div class="py-3 text-center font-label-md text-label-md text-on-surface-variant uppercase">Sab</div>
+</div>
+<div class="calendar-grid bg-surface-container-lowest">
+<!-- Empty slots for previous month padding if needed -->
+<div class="calendar-day p-2 border-r border-b border-outline-variant opacity-30 bg-surface">
+<span class="font-label-md text-label-md">28</span>
+</div>
+<div class="calendar-day p-2 border-r border-b border-outline-variant opacity-30 bg-surface">
+<span class="font-label-md text-label-md">29</span>
+</div>
+<div class="calendar-day p-2 border-r border-b border-outline-variant opacity-30 bg-surface">
+<span class="font-label-md text-label-md">30</span>
+</div>
+<!-- Calendar Days Start -->
+<div class="calendar-day p-2 border-r border-b border-outline-variant hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">1</span>
+</div>
+<div class="calendar-day p-2 border-r border-b border-outline-variant hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">2</span>
+</div>
+<div class="calendar-day p-2 border-r border-b border-outline-variant hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">3</span>
+<div class="mt-2 bg-primary-container text-on-primary p-1.5 rounded-sm text-[10px] leading-tight font-medium">
+                            Rakor Penertiban PKL
+                        </div>
+</div>
+<div class="calendar-day p-2 border-b border-outline-variant hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">4</span>
+</div>
+<!-- Week 2 -->
+<div class="calendar-day p-2 border-r border-b border-outline-variant hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">5</span>
+</div>
+<div class="calendar-day p-2 border-r border-b border-outline-variant hover:bg-surface-container-low transition-colors group cursor-pointer bg-primary/5">
+<span class="font-label-md text-label-md text-primary font-bold">6</span>
+<div class="mt-2 bg-primary-container text-on-primary p-1.5 rounded-sm text-[10px] leading-tight font-medium">
+                            Apel Siaga Bencana
+                        </div>
+<div class="mt-1 bg-on-primary-fixed-variant text-on-primary p-1.5 rounded-sm text-[10px] leading-tight font-medium">
+                            Kunjungan DPRD
+                        </div>
+</div>
+<div class="calendar-day p-2 border-r border-b border-outline-variant hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">7</span>
+</div>
+<div class="calendar-day p-2 border-r border-b border-outline-variant hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">8</span>
+</div>
+<div class="calendar-day p-2 border-r border-b border-outline-variant hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">9</span>
+</div>
+<div class="calendar-day p-2 border-r border-b border-outline-variant hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">10</span>
+</div>
+<div class="calendar-day p-2 border-b border-outline-variant hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">11</span>
+</div>
+<div class="calendar-day p-2 border-r border-b border-outline-variant hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">12</span>
+</div>
+<div class="calendar-day p-2 border-r border-b border-outline-variant hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">13</span>
+</div>
+<div class="calendar-day p-2 border-r border-b border-outline-variant hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">14</span>
+</div>
+<div class="calendar-day p-2 border-r border-b border-outline-variant hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">15</span>
+<div class="mt-2 bg-primary-container text-on-primary p-1.5 rounded-sm text-[10px] leading-tight font-medium">Ops. Yustisi</div>
+</div>
+<div class="calendar-day p-2 border-r border-b border-outline-variant hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">16</span>
+</div>
+<div class="calendar-day p-2 border-r border-b border-outline-variant hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">17</span>
+</div>
+<div class="calendar-day p-2 border-r border-b border-outline-variant hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">18</span>
+</div>
+<div class="calendar-day p-2 border-r border-b border-outline-variant hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">19</span>
+</div>
+<div class="calendar-day p-2 border-r border-b border-outline-variant hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">20</span>
+</div>
+<div class="calendar-day p-2 border-r border-b border-outline-variant hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">21</span>
+</div>
+<div class="calendar-day p-2 border-r border-b border-outline-variant hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">22</span>
+</div>
+<div class="calendar-day p-2 border-r border-b border-outline-variant hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">23</span>
+</div>
+<div class="calendar-day p-2 border-r border-b border-outline-variant hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">24</span>
+<div class="mt-2 bg-primary-container text-on-primary p-1.5 rounded-sm text-[10px] leading-tight font-medium">Pelantikan PPNS</div>
+</div>
+<div class="calendar-day p-2 border-r border-b border-outline-variant hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">25</span>
+</div>
+<div class="calendar-day p-2 border-r border-b border-outline-variant hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">26</span>
+</div>
+<div class="calendar-day p-2 border-r border-b border-outline-variant hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">27</span>
+</div>
+<div class="calendar-day p-2 border-r border-b border-outline-variant hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">28</span>
+</div>
+<div class="calendar-day p-2 border-r border-b border-outline-variant hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">29</span>
+</div>
+<div class="calendar-day p-2 border-r border-b border-outline-variant hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">30</span>
+</div>
+<div class="calendar-day p-2 border-r border-b border-outline-variant hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="font-label-md text-label-md text-on-surface-variant">31</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Stats and Lists -->
+<div class="w-full lg:w-1/3 flex flex-col gap-stack-md">
+<!-- Statistics Cards -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-secondary text-on-secondary p-6 rounded-xl shadow-md border border-secondary transition-transform hover:scale-[1.02]">
+<span class="material-symbols-outlined mb-2 opacity-80">event_upcoming</span>
+<h3 class="font-label-md text-label-md opacity-80">Akan Datang</h3>
+<p class="font-headline-lg text-headline-lg mt-1">12</p>
+</div>
+<div class="bg-white text-secondary p-6 rounded-xl shadow-sm border border-outline-variant transition-transform hover:scale-[1.02]">
+<span class="material-symbols-outlined mb-2 text-on-surface-variant opacity-60">task_alt</span>
+<h3 class="font-label-md text-label-md text-on-surface-variant opacity-60">Selesai</h3>
+<p class="font-headline-lg text-headline-lg mt-1 text-on-surface">48</p>
+</div>
+</div>
+<!-- Agenda Mendatang List -->
+<div class="bg-white border border-outline-variant rounded-xl shadow-sm p-stack-md">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-headline-md text-headline-md flex items-center gap-2 text-secondary">
+<span class="material-symbols-outlined">schedule</span>
+                        Agenda Terdekat
+                    </h3>
+<a class="text-primary font-label-sm text-label-sm hover:underline" href="#">Lihat Semua</a>
+</div>
+<div class="space-y-4">
+<!-- Item 1 -->
+<div class="flex gap-4 p-4 rounded-lg bg-surface-container-low border border-transparent hover:border-primary-container transition-all cursor-pointer">
+<div class="flex flex-col items-center justify-center bg-secondary text-on-secondary rounded w-12 h-14 shrink-0">
+<span class="text-[10px] font-bold uppercase">Okt</span>
+<span class="text-xl font-bold">15</span>
+</div>
+<div class="flex flex-col">
+<h4 class="font-label-md text-label-md text-on-surface">Operasi Yustisi Gabungan</h4>
+<p class="text-label-sm text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+                                Alun-alun Kota
+                            </p>
+<p class="text-[12px] text-on-surface-variant font-medium mt-1">08:00 - 12:00 WIB</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex gap-4 p-4 rounded-lg bg-surface-container-low border border-transparent hover:border-primary-container transition-all cursor-pointer">
+<div class="flex flex-col items-center justify-center bg-secondary text-on-secondary rounded w-12 h-14 shrink-0">
+<span class="text-[10px] font-bold uppercase">Okt</span>
+<span class="text-xl font-bold">24</span>
+</div>
+<div class="flex flex-col">
+<h4 class="font-label-md text-label-md text-on-surface">Pelantikan Anggota PPNS Baru</h4>
+<p class="text-label-sm text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+                                Balai Kota Gedung A
+                            </p>
+<p class="text-[12px] text-on-surface-variant font-medium mt-1">10:00 WIB - Selesai</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Baru Selesai List -->
+<div class="bg-white border border-outline-variant rounded-xl shadow-sm p-stack-md">
+<h3 class="font-headline-md text-headline-md text-on-surface-variant mb-4 flex items-center gap-2 text-secondary">
+<span class="material-symbols-outlined">history</span>
+                    Baru Selesai
+                </h3>
+<div class="space-y-4 opacity-75">
+<div class="flex items-start gap-4 border-l-4 border-outline-variant pl-4 py-2">
+<div class="flex flex-col">
+<h4 class="font-label-md text-label-md text-on-surface-variant">Rapat Koordinasi Lintas Sektor</h4>
+<p class="text-label-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                                Selesai 3 Jam yang lalu
+                            </p>
+</div>
+</div>
+<div class="flex items-start gap-4 border-l-4 border-outline-variant pl-4 py-2">
+<div class="flex flex-col">
+<h4 class="font-label-md text-label-md text-on-surface-variant">Patroli Wilayah Perbatasan</h4>
+<p class="text-label-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                                Selesai Kemarin
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer (Based on Shared Components) -->
+<footer class="w-full bg-primary py-stack-lg border-t border-on-primary-fixed-variant mt-stack-lg">
+<div class="max-w-container-max mx-auto px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex flex-col items-center md:items-start">
+<span class="font-headline-lg text-headline-lg text-on-primary mb-2">Satpol PP</span>
+<p class="font-label-sm text-label-sm text-on-primary opacity-70">© 2024 Satpol PP. Seluruh Hak Cipta Dilindungi.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="font-label-sm text-label-sm text-on-primary opacity-70 hover:text-tertiary-fixed transition-colors" href="#">Kebijakan Privasi</a>
+<a class="font-label-sm text-label-sm text-on-primary opacity-70 hover:text-tertiary-fixed transition-colors" href="#">Syarat &amp; Ketentuan</a>
+<a class="font-label-sm text-label-sm text-on-primary opacity-70 hover:text-tertiary-fixed transition-colors" href="#">Peta Situs</a>
+<a class="font-label-sm text-label-sm text-on-primary opacity-70 hover:text-tertiary-fixed transition-colors" href="#">Hubungi Kami</a>
+</div>
+<div class="flex gap-4">
+<button class="w-10 h-10 rounded-full border border-on-primary-fixed-variant flex items-center justify-center text-on-primary hover:bg-primary-container transition-all">
+<span class="material-symbols-outlined">language</span>
+</button>
+<button class="w-10 h-10 rounded-full border border-on-primary-fixed-variant flex items-center justify-center text-on-primary hover:bg-primary-container transition-all">
+<span class="material-symbols-outlined">alternate_email</span>
+</button>
+</div>
+</div>
+</footer>
+<!-- FAB -->
+<button class="fixed bottom-8 right-8 bg-tertiary-container text-on-tertiary-container p-4 rounded-full shadow-lg hover:scale-110 active:scale-95 transition-all md:hidden">
+<span class="material-symbols-outlined">add</span>
+</button>
+<script>
+        // Simple interaction for calendar days
+        document.querySelectorAll('.calendar-day').forEach(day => {
+            day.addEventListener('click', () => {
+                const dayNumber = day.querySelector('span')?.textContent;
+                if(dayNumber) {
+                    console.log('Viewing agenda for date:', dayNumber);
+                    // Add active state visual
+                    document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('ring-2', 'ring-primary', 'z-10'));
+                    day.classList.add('ring-2', 'ring-primary', 'z-10');
+                }
+            });
+        });
+    </script>
+
+
+</body></html>

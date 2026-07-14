@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Tugas dan Fungsi | Satpol PP Digital HQ</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Tambahan Alpine.js untuk mendukung interaktivitas menu navbar & dropdown -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f3f4f5",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#00452e",
+                        "on-tertiary-container": "#75b393",
+                        "inverse-primary": "#a5d0b9",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#edeeef",
+                        "surface": "#f8f9fa",
+                        "on-primary-container": "#86af99",
+                        "secondary-container": "#dfe0e0",
+                        "primary": "#012d1d",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#b1f0ce",
+                        "on-surface-variant": "#414844",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "on-primary-fixed-variant": "#274e3d",
+                        "on-background": "#191c1d",
+                        "secondary": "#5d5f5f",
+                        "on-tertiary-fixed": "#002114",
+                        "surface-tint": "#3f6653",
+                        "inverse-on-surface": "#f0f1f2",
+                        "primary-container": "#1b4332",
+                        "inverse-surface": "#2e3132",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "on-surface": "#191c1d",
+                        "on-primary-fixed": "#002114",
+                        "surface-dim": "#d9dadb",
+                        "primary-fixed": "#c1ecd4",
+                        "surface-variant": "#e1e3e4",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-secondary-fixed-variant": "#454747",
+                        "on-tertiary-fixed-variant": "#0e5138",
+                        "outline": "#717973",
+                        "primary-fixed-dim": "#a5d0b9",
+                        "surface-container-high": "#e7e8e9",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#95d4b3",
+                        "error-container": "#ffdad6",
+                        "background": "#f8f9fa",
+                        "surface-bright": "#f8f9fa",
+                        "on-secondary-container": "#616363",
+                        "tertiary": "#002d1c",
+                        "surface-container-highest": "#e1e3e4",
+                        "outline-variant": "#c1c8c2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "stack-sm": "8px",
+                        "base": "8px",
+                        "stack-md": "16px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "stack-lg": "32px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 1000px;
+            padding-bottom: 24px;
+        }
+        .accordion-item.active .arrow-icon {
+            transform: rotate(180deg);
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background" x-data="{ mobileMenuOpen: false }">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-[#D3E4DC] rounded-xl flex items-center justify-center text-[#2D4339] font-bold shadow-inner">
+                        🛡️
+                    </div>
+                    <div>
+                        <span class="block text-xs font-semibold tracking-wider text-emerald-700 uppercase">Situs Resmi</span>
+                        <span class="block text-lg font-bold text-emerald-900 tracking-tight">SATPOL PP</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex space-x-1">
+                    <a href="index.html" class="px-3 py-2 rounded-lg text-sm font-medium text-emerald-800 bg-[#e8f0ec]">Beranda</a>
+                    
+                    <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                        <button class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50 flex items-center space-x-1">
+                            <span>Profil PD</span>
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="open" x-transition class="absolute left-0 w-56 pt-2 z-50">
+                            <div class="bg-white border border-gray-100 rounded-xl shadow-lg py-2">
+                                <a href="profilpimpinan.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Profil Pimpinan</a>
+                                <a href="sejarah.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Sejarah</a>
+                                <a href="struktur.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Struktur Organisasi</a>
+                                <a href="visimisi.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Visi dan Misi</a>
+                                <a href="tugasfungsi.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Tugas dan Fungsi</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="program.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50">Program</a>
+                    <a href="agenda.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50">Agenda Pimpinan</a>
+
+                    <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                        <button class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50 flex items-center space-x-1">
+                            <span>Publikasi</span>
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="open" x-transition class="absolute left-0 w-48 pt-2 z-50">
+                            <div class="bg-white border border-gray-100 rounded-xl shadow-lg py-2">
+                                <a href="berita.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Berita</a>
+                                <a href="detailberita.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Detail Berita</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                        <button class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50 flex items-center space-x-1">
+                            <span>Dokumentasi</span>
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="open" x-transition class="absolute left-0 w-48 pt-2 z-50">
+                            <div class="bg-white border border-gray-100 rounded-xl shadow-lg py-2">
+                                <a href="galerikegiatan.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Galeri Foto</a>
+                                <a href="video.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Video Kegiatan</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="hidden lg:flex items-center">
+                    <a href="sarandankritik.html" class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-medium text-white bg-[#557B67] hover:bg-[#436252] transition-colors shadow-sm">
+                        Saran & Kritik
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex lg:hidden">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="inline-flex items-center justify-center p-2 rounded-xl text-gray-500 hover:text-gray-600 hover:bg-gray-100 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path x-show="mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div x-show="mobileMenuOpen" x-transition class="lg:hidden border-t border-gray-100 bg-white px-4 pt-2 pb-6 space-y-1 shadow-inner">
+            <a href="index.html" class="block px-3 py-2 rounded-lg text-base font-medium text-emerald-800 bg-[#e8f0ec]">Beranda</a>
+            
+            <div x-data="{ open: false }">
+                <button @click="open = !open" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">
+                    <span>Profil PD</span>
+                    <svg class="w-4 h-4 transform transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div x-show="open" x-transition class="pl-4 space-y-1 mt-1">
+                    <a href="profilpimpinan.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Profil Pimpinan</a>
+                    <a href="sejarah.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Sejarah</a>
+                    <a href="struktur.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Struktur Organisasi</a>
+                    <a href="visimisi.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Visi dan Misi</a>
+                    <a href="tugasfungsi.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Tugas dan Fungsi</a>
+                </div>
+            </div>
+
+            <a href="program.html" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">Program</a>
+            <a href="agenda.html" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">Agenda Pimpinan</a>
+
+            <div x-data="{ open: false }">
+                <button @click="open = !open" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">
+                    <span>Publikasi</span>
+                    <svg class="w-4 h-4 transform transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div x-show="open" x-transition class="pl-4 space-y-1 mt-1">
+                    <a href="berita.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Berita</a>
+                    <a href="detailberita.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Detail Berita</a>
+                </div>
+            </div>
+
+            <div x-data="{ open: false }">
+                <button @click="open = !open" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">
+                    <span>Dokumentasi</span>
+                    <svg class="w-4 h-4 transform transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div x-show="open" x-transition class="pl-4 space-y-1 mt-1">
+                    <a href="galerikegiatan.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Galeri Foto</a>
+                    <a href="video.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Video Kegiatan</a>
+                </div>
+            </div>
+
+            <a href="sarandankritik.html" class="block px-3 py-2 rounded-lg text-base font-medium text-white bg-[#557B67] text-center shadow-sm !mt-4">Saran & Kritik</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Grid Wrapper Perbaikan Utama -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- Left Side: Visual/Context -->
+            <div class="lg:col-span-4 space-y-6">
+                <div class="bg-surface-container rounded-xl overflow-hidden shadow-sm aspect-square relative group">
+                    <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAsaEsW3q2OewwbvK3tAwq5OmY9oKbZEl8DwrCD6xd0tFwPAvuIfH0LE2ms7Pz6cf4TL5pzOJZT-JIlZl5q4UyFbTf0DN8n_4wi5GE22fyUFyiRFy3b8UkMJKsNd_ieOBQn8r0vSD1RtM_0zknfLzl2bH6O0ZoUVtJzgMralmqnyIrDD0xqRnbIyAwZNRESu5PyLvy4D6CjjQEl96NFuT7KTAl_gA6eMNZ28K4BiAwGE26uMVCWAGXAuw-bdBMm-xQftLW2d9BY1SQ')"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6 text-on-primary">
+                        <span class="font-label-sm text-xs uppercase tracking-widest bg-primary-container/80 px-2 py-1 rounded">Visi Institusi</span>
+                        <h3 class="text-xl font-bold mt-2">Mewujudkan Ketertiban Berbasis Pelayanan</h3>
+                    </div>
+                </div>
+                <div class="p-6 rounded-xl text-on-primary shadow-sm bg-primary">
+                    <span class="material-symbols-outlined text-4xl mb-2">gavel</span>
+                    <h4 class="font-semibold mb-1">Landasan Hukum</h4>
+                    <p class="text-sm opacity-90">Sesuai dengan Peraturan Pemerintah No. 16 Tahun 2018 tentang Satuan Polisi Pamong Praja.</p>
+                </div>
+            </div>
+
+            <!-- Right Side: Accordion Content -->
+            <div class="lg:col-span-8 space-y-4">
+                
+                <!-- Accordion Item 1: Tugas Pokok -->
+                <div class="accordion-item bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden active">
+                    <button class="w-full flex items-center justify-between p-6 text-left transition-colors hover:bg-surface-container-low" onclick="toggleAccordion(this)">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-primary/10 p-3 rounded-lg">
+                                <span class="material-symbols-outlined text-primary text-3xl">shield</span>
+                            </div>
+                            <div>
+                                <h2 class="text-lg font-bold text-primary">Tugas Pokok</h2>
+                                <p class="text-xs text-on-surface-variant">Penegakan Perda &amp; Ketertiban Umum</p>
+                            </div>
+                        </div>
+                        <span class="material-symbols-outlined arrow-icon transition-transform duration-300">expand_more</span>
+                    </button>
+                    <div class="accordion-content px-6 border-t border-outline-variant/30 pt-6">
+                        <ul class="space-y-4 text-sm text-on-surface">
+                            <li class="flex items-start gap-4">
+                                <span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+                                <span>Menegakkan Peraturan Daerah (Perda) dan Peraturan Kepala Daerah (Perkada) secara konsisten dan transparan.</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+                                <span>Menyelenggarakan ketertiban umum dan ketentraman masyarakat untuk menciptakan lingkungan yang kondusif.</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+                                <span>Melakukan tindakan non-yustisial terhadap warga masyarakat, aparatur, atau badan hukum yang melakukan pelanggaran.</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+                                <span>Mengawal pelaksanaan kebijakan strategis pemerintah daerah dalam penataan ruang dan infrastruktur publik.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Accordion Item 2: Fungsi Pelayanan -->
+                <div class="accordion-item bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+                    <button class="w-full flex items-center justify-between p-6 text-left transition-colors hover:bg-surface-container-low" onclick="toggleAccordion(this)">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-primary/10 p-3 rounded-lg">
+                                <span class="material-symbols-outlined text-primary text-3xl">volunteer_activism</span>
+                            </div>
+                            <div>
+                                <h2 class="text-lg font-bold text-primary">Fungsi Pelayanan</h2>
+                                <p class="text-xs text-on-surface-variant">Perlindungan Masyarakat &amp; Administrasi</p>
+                            </div>
+                        </div>
+                        <span class="material-symbols-outlined arrow-icon transition-transform duration-300">expand_more</span>
+                    </button>
+                    <div class="accordion-content px-6 border-t border-outline-variant/30">
+                        <ul class="space-y-4 text-sm text-on-surface mt-6">
+                            <li class="flex items-start gap-4">
+                                <span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+                                <span>Penyusunan program dan pelaksanaan penegakan Perda, penyelenggaraan ketertiban umum dan ketentraman masyarakat.</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+                                <span>Pelaksanaan kebijakan perlindungan masyarakat (Linmas) dalam upaya penanggulangan bencana dan keamanan wilayah.</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+                                <span>Pemberian dukungan teknis dan administratif kepada seluruh jajaran personel di tingkat pusat hingga kelurahan.</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+                                <span>Fasilitasi dan edukasi masyarakat mengenai kesadaran hukum dan pentingnya menjaga ketertiban bersama.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Accordion Item 3: Kewenangan Hukum -->
+                <div class="accordion-item bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+                    <button class="w-full flex items-center justify-between p-6 text-left transition-colors hover:bg-surface-container-low" onclick="toggleAccordion(this)">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-primary/10 p-3 rounded-lg">
+                                <span class="material-symbols-outlined text-primary text-3xl">policy</span>
+                            </div>
+                            <div>
+                                <h2 class="text-lg font-bold text-primary">Kewenangan Hukum</h2>
+                                <p class="text-xs text-on-surface-variant">Inspeksi, Investigasi &amp; Penindakan</p>
+                            </div>
+                        </div>
+                        <span class="material-symbols-outlined arrow-icon transition-transform duration-300">expand_more</span>
+                    </button>
+                    <div class="accordion-content px-6 border-t border-outline-variant/30">
+                        <ul class="space-y-4 text-sm text-on-surface mt-6">
+                            <li class="flex items-start gap-4">
+                                <span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+                                <span>Melakukan tindakan administratif terhadap warga masyarakat yang melanggar ketentuan Perda atau Perkada.</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+                                <span>Menindaklanjuti laporan atau aduan masyarakat terkait indikasi pelanggaran ketertiban umum.</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+                                <span>Melakukan koordinasi dengan kepolisian (PPNS) untuk penyidikan tindak pidana pelanggaran peraturan daerah.</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+                                <span>Berwenang untuk menutup atau menghentikan sementara kegiatan usaha yang tidak memiliki izin sesuai regulasi.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-on-primary mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+                <div class="md:col-span-5">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 bg-surface-container-lowest rounded-full flex items-center justify-center text-primary">
+                            <span class="material-symbols-outlined text-3xl">shield</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-bold text-xl leading-tight">SATPOL PP</span>
+                            <span class="text-xs opacity-80">Provinsi DKI Jakarta</span>
+                        </div>
+                    </div>
+                    <p class="text-sm opacity-80 max-w-md mb-8">
+                        Menyelenggarakan ketertiban umum dan ketentraman masyarakat serta perlindungan masyarakat yang profesional dan humanis.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full border border-on-primary/20 flex items-center justify-center hover:bg-on-primary/10 transition-colors"><span class="material-symbols-outlined">share</span></a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-on-primary/20 flex items-center justify-center hover:bg-on-primary/10 transition-colors"><span class="material-symbols-outlined">public</span></a>
+                    </div>
+                </div>
+                <div class="md:col-span-2">
+                    <h4 class="font-bold mb-6">Tautan Cepat</h4>
+                    <ul class="space-y-4 text-sm opacity-80">
+                        <li><a href="index.html" class="hover:underline">Beranda</a></li>
+                        <li><a href="profilpimpinan.html" class="hover:underline">Profil</a></li>
+                        <li><a href="tugasfungsi.html" class="hover:underline">Tugas &amp; Fungsi</a></li>
+                        <li><a href="berita.html" class="hover:underline">Berita</a></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-2">
+                    <h4 class="font-bold mb-6">Layanan</h4>
+                    <ul class="space-y-4 text-sm opacity-80">
+                        <li><a href="#" class="hover:underline">Pengaduan</a></li>
+                        <li><a href="#" class="hover:underline">Perizinan</a></li>
+                        <li><a href="#" class="hover:underline">E-Linmas</a></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-3">
+                    <h4 class="font-bold mb-6">Kontak Kami</h4>
+                    <ul class="space-y-4 text-sm opacity-80">
+                        <li class="flex gap-3"><span class="material-symbols-outlined">location_on</span> Jl. Medan Merdeka Selatan No. 8-9, Jakarta Pusat</li>
+                        <li class="flex gap-3"><span class="material-symbols-outlined">call</span> (021) 3822123</li>
+                        <li class="flex gap-3"><span class="material-symbols-outlined">mail</span> satpolpp@jakarta.go.id</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-on-primary/10 py-6 px-4">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs opacity-60">
+                <p>© 2026 Satuan Polisi Pamong Praja. Seluruh Hak Cipta Dilindungi.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="">Kebijakan Privasi</a>
+                    <a href="#" class="">Syarat &amp; Ketentuan</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Accordion Script -->
+    <script>
+        function toggleAccordion(element) {
+            const currentItem = element.closest('.accordion-item');
+            const items = document.querySelectorAll('.accordion-item');
+            
+            items.forEach(item => {
+                if (item === currentItem) {
+                    item.classList.toggle('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

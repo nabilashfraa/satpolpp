@@ -1,0 +1,497 @@
+<!DOCTYPE html><html class="light" lang="id"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<!-- 1. Perbaikan Title agar sesuai dengan Satpol PP -->
+<title>Program Kerja Strategis - Satuan Polisi Pamong Praja Musi Banyuasin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- 2. Menambahkan Alpine.js agar dropdown & menu mobile berfungsi -->
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght=400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#b1f0ce",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "on-surface-variant": "#414844",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#274e3d",
+                        "primary-fixed-dim": "#a5d0b9",
+                        "outline": "#717973",
+                        "on-error": "#ffffff",
+                        "surface": "#f8f9fa",
+                        "surface-container-low": "#f3f4f5",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#a5d0b9",
+                        "on-primary-container": "#86af99",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-container-high": "#e7e8e9",
+                        "surface-container-highest": "#e1e3e4",
+                        "surface-container": "#edeeef",
+                        "outline-variant": "#c1c8c2",
+                        "surface-tint": "#3f6653",
+                        "on-tertiary-fixed": "#002114",
+                        "surface-bright": "#f8f9fa",
+                        "primary": "#012d1d", 
+                        "on-tertiary-container": "#75b393",
+                        "tertiary": "#002d1c",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#2e3132",
+                        "secondary": "#5d5f5f",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#191c1d",
+                        "background": "#f8f9fa",
+                        "surface-variant": "#e1e3e4",
+                        "secondary-fixed": "#e2e2e2",
+                        "tertiary-fixed-dim": "#95d4b3",
+                        "primary-container": "#1b4332",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#002114",
+                        "on-background": "#191c1d",
+                        "on-secondary-fixed-variant": "#454747",
+                        "secondary-container": "#dfe0e0",
+                        "on-tertiary-fixed-variant": "#0e5138",
+                        "surface-dim": "#d9dadb",
+                        "primary-fixed": "#c1ecd4",
+                        "on-secondary-container": "#616363",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#00452e",
+                        "brand-blue": "#1B4332", 
+                        "brand-primary": "#1E3A8A" 
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "margin-mobile": "16px",
+                        "container-max": "1280px",
+                        "stack-md": "16px",
+                        "stack-lg": "32px",
+                        "gutter": "24px",
+                        "margin-desktop": "40px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #F8F9FA; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 1;
+        }
+        .active-nav-underline {
+            position: relative;
+        }
+        .active-nav-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #1E3A8A;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<!-- 3. Inisialisasi state menu mobile menggunakan x-data di bodi atas -->
+<body class="bg-background text-on-background" x-data="{ mobileMenuOpen: false }">
+
+<!-- Header Section -->
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <div class="flex-shrink-0 flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-[#D3E4DC] rounded-xl flex items-center justify-center text-[#2D4339] font-bold shadow-inner">
+                        🛡️
+                    </div>
+                    <div>
+                        <span class="block text-xs font-semibold tracking-wider text-emerald-700 uppercase">Situs Resmi</span>
+                        <span class="block text-lg font-bold text-emerald-900 tracking-tight">SATPOL PP</span>
+                    </div>
+                </div>
+
+                <nav class="hidden lg:flex space-x-1">
+                    <a href="index.html" class="px-3 py-2 rounded-lg text-sm font-medium text-emerald-800 bg-[#e8f0ec]">Beranda</a>
+                    
+                    <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                        <button class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50 flex items-center space-x-1">
+                            <span>Profil PD</span>
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="open" x-transition class="absolute left-0 w-56 pt-2 z-50" style="display: none;">
+                            <div class="bg-white border border-gray-100 rounded-xl shadow-lg py-2">
+                                <a href="profilpimpinan.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Profil Pimpinan</a>
+                                <a href="sarandankritik.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Sejarah</a>
+                                <a href="struktur.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Struktur Organisasi</a>
+                                <a href="visimisi.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Visi dan Misi</a>
+                                <a href="tugasfungsi.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Tugas dan Fungsi</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="program.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50">Program</a>
+                    <a href="agenda.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50">Agenda Pimpinan</a>
+
+                    <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                        <button class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50 flex items-center space-x-1">
+                            <span>Publikasi</span>
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="open" x-transition class="absolute left-0 w-48 pt-2 z-50" style="display: none;">
+                            <div class="bg-white border border-gray-100 rounded-xl shadow-lg py-2">
+                                <a href="berita.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Berita</a>
+                                <a href="detailberita.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Detail Berita</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                        <button class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50 flex items-center space-x-1">
+                            <span>Dokumentasi</span>
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="open" x-transition class="absolute left-0 w-48 pt-2 z-50" style="display: none;">
+                            <div class="bg-white border border-gray-100 rounded-xl shadow-lg py-2">
+                                <a href="galerikegiatan.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Galeri Foto</a>
+                                <a href="video.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Video Kegiatan</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+                <div class="hidden lg:flex items-center">
+                    <a href="sarandankritik.html" class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-medium text-white bg-[#557B67] hover:bg-[#436252] transition-colors shadow-sm">
+                        Saran & Kritik
+                    </a>
+                </div>
+
+                <div class="flex lg:hidden">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="inline-flex items-center justify-center p-2 rounded-xl text-gray-500 hover:text-gray-600 hover:bg-gray-100 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path x-show="mobileMenuOpen" x-transition stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" style="display: none;" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div x-show="mobileMenuOpen" x-transition class="lg:hidden border-t border-gray-100 bg-white px-4 pt-2 pb-6 space-y-1 shadow-inner" style="display: none;">
+            <a href="index.html" class="block px-3 py-2 rounded-lg text-base font-medium text-emerald-800 bg-[#e8f0ec]">Beranda</a>
+            
+            <div x-data="{ open: false }">
+                <button @click="open = !open" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">
+                    <span>Profil PD</span>
+                    <svg class="w-4 h-4 transform transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div x-show="open" x-transition class="pl-4 space-y-1 mt-1" style="display: none;">
+                    <a href="profilpimpinan.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Profil Pimpinan</a>
+                    <a href="sejarah.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Sejarah</a>
+                    <a href="struktur.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Struktur Organisasi</a>
+                    <a href="visimisi.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Visi dan Misi</a>
+                    <a href="tugasfungsi.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Tugas dan Fungsi</a>
+                </div>
+            </div>
+
+            <a href="program.html" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">Program</a>
+            <a href="agenda.html" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">Agenda Pimpinan</a>
+
+            <div x-data="{ open: false }">
+                <button @click="open = !open" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">
+                    <span>Publikasi</span>
+                    <svg class="w-4 h-4 transform transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div x-show="open" x-transition class="pl-4 space-y-1 mt-1" style="display: none;">
+                    <a href="berita.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Berita</a>
+                    <a href="detailberita.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Detail Berita</a>
+                </div>
+            </div>
+
+            <div x-data="{ open: false }">
+                <button @click="open = !open" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">
+                    <span>Dokumentasi</span>
+                    <svg class="w-4 h-4 transform transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div x-show="open" x-transition class="pl-4 space-y-1 mt-1" style="display: none;">
+                    <a href="galerikegiatan.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Galeri Foto</a>
+                    <a href="video.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Video Kegiatan</a>
+                </div>
+            </div>
+
+            <a href="#" class="block px-3 py-2 rounded-lg text-base font-medium text-white bg-[#557B67] text-center shadow-sm !mt-4">Saran & Kritik</a>
+        </div>
+    </header>
+
+<main class="pt-8 md:pt-12">
+<!-- Hero Section -->
+<section class="py-stack-lg min-h-[320px] flex items-center justify-center relative overflow-hidden bg-primary-container">
+<div class="absolute inset-0 opacity-10">
+<div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-desktop text-center relative z-10">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 rounded-full text-white text-label-sm font-label-sm mb-stack-md backdrop-blur-sm">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+                    Transparansi Kinerja Publik
+                </div>
+<h2 class="font-headline-xl text-headline-xl text-white mb-stack-md">Program Kerja Strategis</h2>
+<!-- 4. Perbaikan Deskripsi Hero agar sesuai dengan Tupoksi Satpol PP -->
+<p class="font-body-lg text-body-lg text-white/90 max-w-3xl mx-auto">
+                    Mewujudkan ketenteraman, ketertiban umum, dan perlindungan masyarakat yang optimal melalui program kerja yang transparan, akuntabel, dan berbasis data.
+                </p>
+</div>
+</section>
+
+<!-- Filter Container (Floating) -->
+<section class="max-w-container-max mx-auto px-margin-desktop -mt-12 relative z-20">
+<div class="bg-white rounded-xl shadow-lg p-stack-md md:p-stack-lg border border-outline-variant">
+<div class="flex items-center gap-2 mb-stack-md">
+<span class="material-symbols-outlined text-brand-primary text-[20px]">filter_list</span>
+<span class="font-label-md text-label-md text-secondary">Filter Kategori Program:</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<button class="px-5 py-2 rounded-full text-white font-label-md text-label-md shadow-md transition-all bg-brand-primary">Semua Program</button>
+<button class="px-5 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-all">APBD 2026</button>
+<button class="px-5 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-all">APBN 2025</button>
+<button class="px-5 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-all">Triwulan 2025 bulan ke-3</button>
+<button class="px-5 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-all">RPJMD 2026</button>
+<button class="px-5 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-all">RPJM 2025</button>
+<button class="px-5 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-all">RPJM 2024</button>
+<button class="px-5 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-all">Renja k13</button>
+<button class="px-5 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-all">RDP KR</button>
+<button class="px-5 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-all">RKP PEDULI</button>
+</div>
+</div>
+</section>
+
+<!-- Content Section -->
+<section class="max-w-container-max mx-auto px-margin-desktop py-stack-lg">
+<div class="mb-stack-lg">
+<h3 class="font-headline-lg text-headline-lg text-primary-container">Daftar Program</h3>
+<p class="font-body-md text-body-md text-secondary mt-1">Menampilkan 4 program kerja yang tersedia saat ini.</p>
+</div>
+<!-- Grid Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<div class="group bg-white rounded-lg border border-outline-variant hover:shadow-md transition-shadow flex flex-col overflow-hidden">
+<div class="p-stack-md flex-grow">
+<div class="flex justify-between items-start mb-4">
+<span class="px-3 py-1 rounded bg-surface-container-high text-brand-primary text-[11px] font-bold uppercase tracking-wider">Renja k13</span>
+<span class="flex items-center gap-1 text-[11px] font-bold text-tertiary-container bg-tertiary-fixed px-2 py-0.5 rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-fixed-variant animate-pulse"></span>
+                                PUBLISHED
+                            </span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-2 group-hover:text-blue-700 transition-colors text-primary-container">Rencana Kerja Operasional Kamtibmas</h4>
+<p class="font-body-md text-body-md text-secondary leading-relaxed line-clamp-3">
+                            Penyusunan peta mitigasi risiko gangguan ketertiban umum daerah.
+                        </p>
+</div>
+<div class="p-stack-md border-t border-outline-variant bg-surface-container-lowest flex items-center justify-between">
+<div class="flex items-center gap-2 text-label-sm text-secondary">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+                            18 Jun 2026
+                        </div>
+<a class="flex items-center gap-1 font-label-md text-label-md hover:underline text-primary-container" href="#">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                            Unduh
+                        </a>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group bg-white rounded-lg border border-outline-variant hover:shadow-md transition-shadow flex flex-col overflow-hidden">
+<div class="p-stack-md flex-grow">
+<div class="flex justify-between items-start mb-4">
+<span class="px-3 py-1 rounded bg-surface-container-high text-brand-primary text-[11px] font-bold uppercase tracking-wider">APBN 2025</span>
+<span class="flex items-center gap-1 text-[11px] font-bold text-tertiary-container bg-tertiary-fixed px-2 py-0.5 rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-fixed-variant"></span>
+                                PUBLISHED
+                            </span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-2 group-hover:text-blue-700 transition-colors text-primary-container">Rapat Pimpinan Dengan Pajak Retribusi Daerah</h4>
+<p class="font-body-md text-body-md text-secondary leading-relaxed line-clamp-3">
+                            Sinergitas penegakan peraturan daerah terkait kepatuhan wajib pajak badan.
+                        </p>
+</div>
+<div class="p-stack-md border-t border-outline-variant bg-surface-container-lowest flex items-center justify-between">
+<div class="flex items-center gap-2 text-label-sm text-secondary">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+                            17 Jun 2026
+                        </div>
+<a class="flex items-center gap-1 font-label-md text-label-md hover:underline text-primary-container" href="#">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                            Unduh
+                        </a>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group bg-white rounded-lg border border-outline-variant hover:shadow-md transition-shadow flex flex-col overflow-hidden">
+<div class="p-stack-md flex-grow">
+<div class="flex justify-between items-start mb-4">
+<span class="px-3 py-1 rounded bg-surface-container-high text-brand-primary text-[11px] font-bold uppercase tracking-wider">APBD 2026</span>
+<span class="flex items-center gap-1 text-[11px] font-bold text-tertiary-container bg-tertiary-fixed px-2 py-0.5 rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-fixed-variant"></span>
+                                PUBLISHED
+                            </span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-2 group-hover:text-blue-700 transition-colors text-primary-container">Dokumen APBD Tahun 2026</h4>
+<p class="font-body-md text-body-md text-secondary leading-relaxed line-clamp-3">
+                            Alokasi anggaran operasional pengawasan penegakan peraturan daerah Kabupaten Musi Banyuasin.
+                        </p>
+</div>
+<div class="p-stack-md border-t border-outline-variant bg-surface-container-lowest flex items-center justify-between">
+<div class="flex items-center gap-2 text-label-sm text-secondary">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+                            11 Jun 2026
+                        </div>
+<a class="flex items-center gap-1 font-label-md text-label-md hover:underline text-primary-container" href="#">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                            Unduh
+                        </a>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="group bg-white rounded-lg border border-outline-variant hover:shadow-md transition-shadow flex flex-col overflow-hidden">
+<div class="p-stack-md flex-grow">
+<div class="flex justify-between items-start mb-4">
+<span class="px-3 py-1 rounded bg-surface-container-high text-brand-primary text-[11px] font-bold uppercase tracking-wider">RKP PEDULI</span>
+<span class="flex items-center gap-1 text-[11px] font-bold text-tertiary-container bg-tertiary-fixed px-2 py-0.5 rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-fixed-variant"></span>
+                                PUBLISHED
+                            </span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-2 group-hover:text-blue-700 transition-colors text-primary-container">RKPD PEDULI 2026</h4>
+<p class="font-body-md text-body-md text-secondary leading-relaxed line-clamp-3">
+                            Program pengamanan wilayah terpadu berbasis peran serta masyarakat desa.
+                        </p>
+</div>
+<div class="p-stack-md border-t border-outline-variant bg-surface-container-lowest flex items-center justify-between">
+<div class="flex items-center gap-2 text-label-sm text-secondary">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+                            10 Jun 2026
+                        </div>
+<a class="flex items-center gap-1 font-label-md text-label-md hover:underline text-primary-container" href="#">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                            Unduh
+                        </a>
+</div>
+</div>
+</div>
+
+<!-- Pagination Placeholder -->
+<div class="mt-stack-lg flex items-center justify-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant text-secondary hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg bg-brand-primary text-white font-bold">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant text-secondary hover:bg-surface-container transition-all">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant text-secondary hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</section>
+</main>
+
+<!-- Footer -->
+<!-- 5. Perbaikan Footer sepenuhnya disesuaikan menjadi Identitas Satpol PP Musi Banyuasin -->
+<footer class="mt-stack-lg border-t-4 border-tertiary-fixed bg-primary-container">
+<div class="max-w-container-max mx-auto px-margin-desktop py-stack-lg">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-stack-lg">
+<div class="md:col-span-2">
+<div class="flex items-center gap-3 mb-stack-md">
+<div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-brand-primary text-[32px]">shield</span>
+</div>
+<h5 class="font-headline-md text-headline-md text-white font-extrabold">Satpol PP Muba</h5>
+</div>
+<p class="text-white/80 font-body-md text-body-md max-w-md">
+                        Satuan Polisi Pamong Praja Kabupaten Musi Banyuasin berkomitmen menegakkan Perda dan menyelenggarakan ketertiban umum secara humanis dan tegas.
+                    </p>
+</div>
+<div>
+<h6 class="text-white font-bold mb-4">Tautan Terkait</h6>
+<ul class="space-y-2 text-white/70 font-body-md text-body-md">
+<li class=""><a class="hover:text-white transition-colors" href="#">Kemendagri RI</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Pemkab Musi Banyuasin</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Polresta Muba</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">SIPD Kemendagri</a></li>
+</ul>
+</div>
+<div>
+<h6 class="text-white font-bold mb-4">Kontak Kami</h6>
+<ul class="space-y-2 text-white/70 font-body-md text-body-md">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+                            Jl. Merdeka No. 12, Sekayu, Musi Banyuasin
+                        </li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+                            info@satpolpp.mubakab.go.id
+                        </li>
+</ul>
+</div>
+</div>
+<div class="pt-stack-md border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-white/60 font-label-md text-label-md">
+                    © 2026 Satuan Polisi Pamong Praja Kabupaten Musi Banyuasin
+                </p>
+<div class="flex gap-4">
+<a class="text-white/60 hover:text-white transition-colors font-label-md text-label-md" href="#">Kebijakan Privasi</a>
+<a class="text-white/60 hover:text-white transition-colors font-label-md text-label-md" href="#">Syarat &amp; Ketentuan</a>
+</div>
+</div>
+</div>
+</footer>
+
+<script>
+        // Micro-interaction untuk filter buttons
+        const filterButtons = document.querySelectorAll('.flex-wrap button');
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => {
+                    b.classList.remove('bg-brand-primary', 'text-white', 'shadow-md');
+                    b.classList.add('bg-surface-container', 'text-on-surface-variant');
+                });
+                btn.classList.add('bg-brand-primary', 'text-white', 'shadow-md');
+                btn.classList.remove('bg-surface-container', 'text-on-surface-variant');
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Struktur Organisasi | Satpol PP Digital HQ</title>
+    <!-- Tailwind CSS & Plugins -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <!-- Alpine.js untuk Interaktivitas Dropdown & Mobile Menu -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Custom Connector Lines for Org Chart */
+        .org-line-v {
+            width: 2px;
+            background-color: #D1D5DB;
+            margin: 0 auto;
+        }
+        
+        .org-line-h {
+            height: 2px;
+            background-color: #D1D5DB;
+            position: absolute;
+            top: 0;
+        }
+
+        .org-card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .org-card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-color: #1b4332;
+        }
+
+        /* Hide scrollbar but keep functionality */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#95d4b3",
+                        "on-secondary-fixed-variant": "#454747",
+                        "on-surface": "#191c1d",
+                        "secondary-container": "#dfe0e0",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "surface-variant": "#e1e3e4",
+                        "primary-fixed": "#c1ecd4",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#a5d0b9",
+                        "on-tertiary-fixed": "#002114",
+                        "tertiary-container": "#00452e",
+                        "on-tertiary-fixed-variant": "#0e5138",
+                        "on-tertiary-container": "#75b393",
+                        "on-error-container": "#93000a",
+                        "secondary": "#5d5f5f",
+                        "on-surface-variant": "#414844",
+                        "surface-container": "#edeeef",
+                        "error": "#ba1a1a",
+                        "primary": "#012d1d",
+                        "inverse-surface": "#2e3132",
+                        "surface-container-low": "#f3f4f5",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-primary": "#ffffff",
+                        "on-background": "#191c1d",
+                        "primary-container": "#1b4332",
+                        "on-secondary-container": "#616363",
+                        "inverse-primary": "#a5d0b9",
+                        "on-primary-container": "#86af99",
+                        "tertiary": "#002d1c",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#b1f0ce",
+                        "surface-bright": "#f8f9fa",
+                        "surface-container-high": "#e7e8e9",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#274e3d",
+                        "background": "#f8f9fa",
+                        "surface-dim": "#d9dadb",
+                        "secondary-fixed": "#e2e2e2",
+                        "surface-tint": "#3f6653",
+                        "outline-variant": "#c1c8c2",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-primary-fixed": "#002114",
+                        "outline": "#717973",
+                        "surface": "#f8f9fa"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "stack-sm": "8px",
+                        "gutter": "24px",
+                        "stack-md": "16px",
+                        "stack-lg": "32px",
+                        "container-max": "1280px",
+                        "base": "8px",
+                        "margin-desktop": "40px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden" x-data="{ sidebarOpen: false }">
+
+    <!-- Header / Navbar Utama -->
+   <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <div class="flex-shrink-0 flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-[#D3E4DC] rounded-xl flex items-center justify-center text-[#2D4339] font-bold shadow-inner">
+                        🛡️
+                    </div>
+                    <div>
+                        <span class="block text-xs font-semibold tracking-wider text-emerald-700 uppercase">Situs Resmi</span>
+                        <span class="block text-lg font-bold text-emerald-900 tracking-tight">SATPOL PP</span>
+                    </div>
+                </div>
+
+                <nav class="hidden lg:flex space-x-1">
+                    <a href="beranda.html" class="px-3 py-2 rounded-lg text-sm font-medium text-emerald-800 bg-[#e8f0ec]">Beranda</a>
+                    
+                    <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave.mouse="open = false">
+                        <button class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50 flex items-center space-x-1">
+                            <span>Profil PD</span>
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="open" x-transition @mouseleave="open = false" class="absolute left-0 w-56 pt-2 z-50">
+                            <div class="bg-white border border-gray-100 rounded-xl shadow-lg py-2">
+                                <a href="profilpimpinan.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Profil Pimpinan</a>
+                                <a href="sejarah.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Sejarah</a>
+                                <a href="struktur.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Struktur Organisasi</a>
+                                <a href="visimisi.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Visi dan Misi</a>
+                                <a href="tugasfungsi.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Tugas dan Fungsi</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="program.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50">Program</a>
+                    <a href="agenda.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50">Agenda Pimpinan</a>
+
+                    <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave.mouse="open = false">
+                        <button class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50 flex items-center space-x-1">
+                            <span>Publikasi</span>
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="open" x-transition @mouseleave="open = false" class="absolute left-0 w-48 pt-2 z-50">
+                            <div class="bg-white border border-gray-100 rounded-xl shadow-lg py-2">
+                                <a href="berita.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Berita</a>
+                                <a href="detailberita.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Detail Berita</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave.mouse="open = false">
+                        <button class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50 flex items-center space-x-1">
+                            <span>Dokumentasi</span>
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="open" x-transition @mouseleave="open = false" class="absolute left-0 w-48 pt-2 z-50">
+                            <div class="bg-white border border-gray-100 rounded-xl shadow-lg py-2">
+                                <a href="galerikegiatan.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Galeri Foto</a>
+                                <a href="video.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Video Kegiatan</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+                <div class="hidden lg:flex items-center">
+                    <a href="sarandankritik.html" class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-medium text-white bg-[#557B67] hover:bg-[#436252] transition-colors shadow-sm">
+                        Saran & Kritik
+                    </a>
+                </div>
+
+                <div class="flex lg:hidden">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="inline-flex items-center justify-center p-2 rounded-xl text-gray-500 hover:text-gray-600 hover:bg-gray-100 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path x-show="mobileMenuOpen" x-transition stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div x-show="mobileMenuOpen" x-transition class="lg:hidden border-t border-gray-100 bg-white px-4 pt-2 pb-6 space-y-1 shadow-inner">
+            <a href="index.html" class="block px-3 py-2 rounded-lg text-base font-medium text-emerald-800 bg-[#e8f0ec]">Beranda</a>
+            
+            <div x-data="{ open: false }">
+                <button @click="open = !open" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">
+                    <span>Profil PD</span>
+                    <svg class="w-4 h-4 transform transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div x-show="open" x-transition class="pl-4 space-y-1 mt-1">
+                    <a href="profilpimpinan.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Profil Pimpinan</a>
+                    <a href="sejarah.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Sejarah</a>
+                    <a href="struktur.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Struktur Organisasi</a>
+                    <a href="visimisi.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Visi dan Misi</a>
+                    <a href="tugasfungsi.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Tugas dan Fungsi</a>
+                </div>
+            </div>
+
+            <a href="program.html" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">Program</a>
+            <a href="agenda.html" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">Agenda Pimpinan</a>
+
+            <div x-data="{ open: false }">
+                <button @click="open = !open" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">
+                    <span>Publikasi</span>
+                    <svg class="w-4 h-4 transform transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div x-show="open" x-transition class="pl-4 space-y-1 mt-1">
+                    <a href="berita.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Berita</a>
+                    <a href="detailberita.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Detail Berita</a>
+                </div>
+            </div>
+
+            <div x-data="{ open: false }">
+                <button @click="open = !open" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">
+                    <span>Dokumentasi</span>
+                    <svg class="w-4 h-4 transform transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div x-show="open" x-transition class="pl-4 space-y-1 mt-1">
+                    <a href="galerikegiatan.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Galeri Foto</a>
+                    <a href="video.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Video Kegiatan</a>
+                </div>
+            </div>
+
+            <a href="sarandankritik.html" class="block px-3 py-2 rounded-lg text-base font-medium text-white bg-[#557B67] text-center shadow-sm !mt-4">Saran & Kritik</a>
+        </div>
+    </header>
+
+    <!-- Backdrop untuk Sidebar Mobile -->
+    <div class="fixed inset-0 z-[1100] md:hidden bg-black/40 transition-opacity duration-300" 
+         x-show="sidebarOpen" 
+         @click="sidebarOpen = false"
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0"
+         x-transition:enter-end="opacity-100"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100"
+         x-transition:leave-end="opacity-0"
+         style="display: none;">
+    </div>
+
+    <!-- SideNavBar / Drawer Menu (Mobile) -->
+    <div class="fixed inset-y-0 left-0 z-[1200] flex flex-col p-margin-mobile md:hidden bg-surface shadow-lg transform transition-transform duration-300 w-72 h-full overflow-y-auto" 
+         :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'">
+        
+        <div class="flex flex-col gap-stack-md mb-6">
+            <span class="text-headline-md font-headline-md text-primary">Satpol PP</span>
+            <span class="text-label-sm text-on-surface-variant -mt-2">Provinsi DKI Jakarta</span>
+        </div>
+
+        <div class="flex flex-col gap-2">
+            <a class="flex items-center gap-stack-md text-on-surface-variant p-3 hover:bg-surface-container-high rounded-lg" href="index.html">
+                <span class="material-symbols-outlined">home</span>
+                <span class="font-label-md">Beranda</span>
+            </a>
+
+            <!-- Dropdown Profil PD -->
+            <div x-data="{ open: false }">
+                <button @click="open = !open" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">
+                    <span>Profil PD</span>
+                    <svg class="w-4 h-4 transform transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div x-show="open" x-transition class="pl-4 space-y-1 mt-1" style="display: none;">
+                    <a href="profilpimpinan.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Profil Pimpinan</a>
+                    <a href="sejarah.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Sejarah</a>
+                    <a href="struktur.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Struktur Organisasi</a>
+                    <a href="visimisi.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Visi dan Misi</a>
+                    <a href="tugasfungsi.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Tugas dan Fungsi</a>
+                </div>
+            </div>
+
+            <a href="program.html" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">Program</a>
+            <a href="agenda.html" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">Agenda Pimpinan</a>
+
+            <!-- Dropdown Publikasi -->
+            <div x-data="{ open: false }">
+                <button @click="open = !open" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">
+                    <span>Publikasi</span>
+                    <svg class="w-4 h-4 transform transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div x-show="open" x-transition class="pl-4 space-y-1 mt-1" style="display: none;">
+                    <a href="berita.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Berita</a>
+                    <a href="detailberita.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Detail Berita</a>
+                </div>
+            </div>
+
+            <!-- Dropdown Dokumentasi -->
+            <div x-data="{ open: false }">
+                <button @click="open = !open" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">
+                    <span>Dokumentasi</span>
+                    <svg class="w-4 h-4 transform transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div x-show="open" x-transition class="pl-4 space-y-1 mt-1" style="display: none;">
+                    <a href="galerikegiatan.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Galeri Foto</a>
+                    <a href="video.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Video Kegiatan</a>
+                </div>
+            </div>
+
+            <a href="sarandankritik.html" class="block px-3 py-2 rounded-lg text-base font-medium text-white bg-[#557B67] text-center shadow-sm !mt-4">Saran & Kritik</a>
+        </div>
+        <button class="mt-auto bg-primary text-on-primary p-4 rounded-xl font-bold">Lapor Sekarang</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-stack-lg px-margin-desktop max-w-container-max mx-auto min-h-screen">
+        <!-- Organizational Chart -->
+        <div class="relative overflow-x-auto no-scrollbar pb-10">
+            <div class="min-w-[1200px] flex flex-col items-center">
+                <!-- Level 1: Kasatpol PP -->
+                <div class="relative flex flex-col items-center">
+                    <div class="org-card-hover w-72 bg-surface-container-lowest border border-outline-variant p-stack-md rounded-xl shadow-sm text-center">
+                        <div class="w-20 h-20 mx-auto mb-3 rounded-full overflow-hidden border-2 border-primary">
+                            <img class="w-full h-full object-cover" alt="Official portrait of Arifin, S.H., M.H." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFvPIqcfq1M2Eq6J-Hc5F2UIOFM2IJRpwQ8jyrKYvoJn2lUO_CcdfnauYqCdQWpcNYebPOFMDLBqnCLEnu5l5NC3b-kE3D6Szoc3FiVhV8bhfe9szGzw_ZOPRfMgFhIeBDquWxqJeF12poE1DeTFBlSq20BaYt3I8k7ecQHfvQdCPq1gGTnoKlnfzSYfBkYiHKg1Uf5UosJNqyF3pFGnLKtBEfAm66bjMINTGwg9fom2iXbke1dhOyaF4PESLymHo_ZFpypatjN5w">
+                        </div>
+                        <h3 class="text-label-md text-primary uppercase tracking-wider mb-1">Kepala Satuan</h3>
+                        <p class="font-bold text-headline-md leading-tight mb-2">Arifin, S.H., M.H.</p>
+                        <span class="text-label-sm text-on-surface-variant bg-surface-container px-3 py-1 rounded-full">NIP. 19720512XXXXXXXX</span>
+                    </div>
+                    <div class="org-line-v h-12"></div>
+                </div>
+
+                <!-- Level 2: Sekretariat -->
+                <div class="relative flex flex-col items-center">
+                    <div class="org-card-hover w-64 bg-surface-container-lowest border border-outline-variant p-stack-md rounded-xl shadow-sm text-center">
+                        <h3 class="text-label-sm text-secondary uppercase tracking-wider mb-1">Sekretariat</h3>
+                        <p class="font-bold text-body-lg leading-tight mb-1">Burhanuddin</p>
+                        <p class="text-label-sm text-on-surface-variant">Sekretaris Satuan</p>
+                    </div>
+                    <div class="org-line-v h-12"></div>
+                </div>
+
+                <!-- Level 3: Connecting Horizontal Line -->
+                <div class="relative w-full px-32">
+                    <div class="org-line-h left-[12.5%] right-[12.5%]"></div>
+                    <div class="flex justify-between w-full">
+                        <div class="org-line-v h-10"></div>
+                        <div class="org-line-v h-10"></div>
+                        <div class="org-line-v h-10"></div>
+                        <div class="org-line-v h-10"></div>
+                    </div>
+                </div>
+
+                <!-- Level 3: Divisions (Bidang) -->
+                <div class="flex justify-between w-full gap-gutter">
+                    <!-- Division 1 -->
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="org-card-hover w-full max-w-[240px] bg-surface-container-lowest border border-outline-variant p-stack-md rounded-xl shadow-sm text-center">
+                            <span class="material-symbols-outlined text-primary mb-2">policy</span>
+                            <h3 class="text-label-sm text-secondary uppercase tracking-tight mb-1">Bidang Trantibum</h3>
+                            <p class="font-bold text-body-md">Kepala Bidang</p>
+                        </div>
+                        <div class="org-line-v h-8"></div>
+                        <div class="space-y-3 w-full max-w-[200px]">
+                            <div class="bg-surface-container border border-outline-variant/50 p-2 rounded-lg text-center text-label-sm">Seksi Operasional</div>
+                            <div class="bg-surface-container border border-outline-variant/50 p-2 rounded-lg text-center text-label-sm">Seksi Pengendalian</div>
+                        </div>
+                    </div>
+
+                    <!-- Division 2 -->
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="org-card-hover w-full max-w-[240px] bg-surface-container-lowest border border-outline-variant p-stack-md rounded-xl shadow-sm text-center">
+                            <span class="material-symbols-outlined text-primary mb-2">gavel</span>
+                            <h3 class="text-label-sm text-secondary uppercase tracking-tight mb-1">Bidang Gakkum</h3>
+                            <p class="font-bold text-body-md">Kepala Bidang</p>
+                        </div>
+                        <div class="org-line-v h-8"></div>
+                        <div class="space-y-3 w-full max-w-[200px]">
+                            <div class="bg-surface-container border border-outline-variant/50 p-2 rounded-lg text-center text-label-sm">Seksi Penyelidikan</div>
+                            <div class="bg-surface-container border border-outline-variant/50 p-2 rounded-lg text-center text-label-sm">Seksi Penindakan</div>
+                        </div>
+                    </div>
+
+                    <!-- Division 3 -->
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="org-card-hover w-full max-w-[240px] bg-surface-container-lowest border border-outline-variant p-stack-md rounded-xl shadow-sm text-center">
+                            <span class="material-symbols-outlined text-primary mb-2">groups</span>
+                            <h3 class="text-label-sm text-secondary uppercase tracking-tight mb-1">Bidang Bangkap</h3>
+                            <p class="font-bold text-body-md">Kepala Bidang</p>
+                        </div>
+                        <div class="org-line-v h-8"></div>
+                        <div class="space-y-3 w-full max-w-[200px]">
+                            <div class="bg-surface-container border border-outline-variant/50 p-2 rounded-lg text-center text-label-sm">Sub-bagian Diklat</div>
+                            <div class="bg-surface-container border border-outline-variant/50 p-2 rounded-lg text-center text-label-sm">Jabatan Fungsional</div>
+                        </div>
+                    </div>
+
+                    <!-- Division 4 -->
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="org-card-hover w-full max-w-[240px] bg-surface-container-lowest border border-outline-variant p-stack-md rounded-xl shadow-sm text-center">
+                            <span class="material-symbols-outlined text-primary mb-2">shield</span>
+                            <h3 class="text-label-sm text-secondary uppercase tracking-tight mb-1">Bidang Linmas</h3>
+                            <p class="font-bold text-body-md">Kepala Bidang</p>
+                        </div>
+                        <div class="org-line-v h-8"></div>
+                        <div class="space-y-3 w-full max-w-[200px]">
+                            <div class="bg-surface-container border border-outline-variant/50 p-2 rounded-lg text-center text-label-sm">Seksi Pemberdayaan</div>
+                            <div class="bg-surface-container border border-outline-variant/50 p-2 rounded-lg text-center text-label-sm">Seksi Mobilisasi</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Section -->
+        <section class="mt-20 grid grid-cols-1 md:grid-cols-2 gap-gutter items-center text-white p-stack-lg rounded-2xl overflow-hidden relative bg-primary">
+            <div class="absolute top-0 right-0 p-8 opacity-10">
+                <span class="material-symbols-outlined text-[160px]">account_tree</span>
+            </div>
+            <div class="relative z-10">
+                <h2 class="text-headline-lg mb-4">Informasi Transparansi</h2>
+                <p class="text-body-md mb-6 opacity-90">
+                    Sesuai dengan komitmen kami terhadap tata kelola pemerintahan yang baik (Good Governance), struktur organisasi ini diperbarui secara berkala sesuai dengan Peraturan Gubernur yang berlaku.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <button class="bg-surface text-primary px-6 py-2 rounded-lg font-label-md flex items-center gap-2 hover:bg-gray-100 transition-colors">
+                        <span class="material-symbols-outlined text-[20px]">download</span>
+                        Unduh PDF Struktur
+                    </button>
+                    <button class="border border-white/30 px-6 py-2 rounded-lg font-label-md hover:bg-white/10 transition-colors">
+                        Lihat Tupoksi
+                    </button>
+                </div>
+            </div>
+            <div class="hidden md:block">
+                <div class="aspect-video rounded-xl overflow-hidden shadow-2xl">
+                    <img class="w-full h-full object-cover" alt="Gedung Satpol PP" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMA1WL9HjcvLkKxBj4KnCf2lR0w5Z9Dn9VRRfBB-4HADxdZbMGRLOrl0DdYR8fQowv0PcT79tAuQ3JVaC800abX0LyK3s_D3Z2KWWHB70iMDgo4m_bK3wkjlh-15khGZgm3kjJq6G7DBVHleZPqKkC3dO94GHGijrxfzqGRgAoy3eHiqtQKrpjXmXYe-6NAT3sVyFHYZzchawKaGD8USMKlx7HI7wQLsitVt9SUc2drCxWiHjJ0ToBtNUYksMe4ziq-S4vsdqCUPA">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-on-surface text-surface mt-20">
+        <div class="w-full py-stack-lg px-margin-desktop flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto">
+            <div class="mb-stack-md md:mb-0 text-center md:text-left">
+                <span class="text-label-md font-label-md font-bold text-surface block mb-2">Satpol PP Digital HQ</span>
+                <p class="text-label-sm text-surface-variant max-w-xs">Pusat Informasi Digital Satuan Polisi Pamong Praja Provinsi DKI Jakarta.</p>
+            </div>
+            <div class="flex gap-6 mb-stack-md md:mb-0">
+                <a class="text-surface-variant hover:text-primary-fixed-dim transition-colors text-label-sm" href="#">Kebijakan Privasi</a>
+                <a class="text-surface-variant hover:text-primary-fixed-dim transition-colors text-label-sm" href="#">Kontak Kami</a>
+                <a class="text-surface-variant hover:text-primary-fixed-dim transition-colors text-label-sm" href="#">Peta Situs</a>
+            </div>
+            <div class="text-label-sm text-surface-variant">
+                © 2026 Satuan Polisi Pamong Praja. Seluruh Hak Cipta Dilindungi.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

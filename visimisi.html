@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Visi dan Misi - Satpol PP</title>
+    <!-- Tailwind CSS & Plugins -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <!-- Alpine.js untuk Interaktivitas Dropdown & Mobile Menu -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#dfe0e0",
+                        "on-tertiary-fixed": "#002114",
+                        "on-tertiary-container": "#75b393",
+                        "tertiary-fixed": "#b1f0ce",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f8f9fa",
+                        "tertiary-container": "#00452e",
+                        "surface-tint": "#3f6653",
+                        "on-tertiary-fixed-variant": "#0e5138",
+                        "surface-dim": "#d9dadb",
+                        "tertiary": "#002d1c",
+                        "surface-container": "#edeeef",
+                        "on-surface": "#191c1d",
+                        "inverse-on-surface": "#f0f1f2",
+                        "primary-container": "#1b4332",
+                        "tertiary-fixed-dim": "#95d4b3",
+                        "outline": "#717973",
+                        "primary-fixed": "#c1ecd4",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-secondary-container": "#616363",
+                        "on-primary-container": "#86af99",
+                        "error-container": "#ffdad6",
+                        "background": "#f8f9fa",
+                        "primary-fixed-dim": "#a5d0b9",
+                        "primary": "#012d1d",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#a5d0b9",
+                        "surface-container-highest": "#e1e3e4",
+                        "secondary": "#5d5f5f",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e7e8e9",
+                        "on-background": "#191c1d",
+                        "surface-variant": "#e1e3e4",
+                        "on-surface-variant": "#414844",
+                        "surface-container-low": "#f3f4f5",
+                        "surface": "#f8f9fa",
+                        "on-secondary-fixed-variant": "#454747",
+                        "on-primary-fixed": "#002114",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#c1c8c2",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "on-primary-fixed-variant": "#274e3d",
+                        "inverse-surface": "#2e3132",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed-dim": "#c6c6c7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "stack-lg": "32px",
+                        "stack-md": "16px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .vision-text-shadow {
+            text-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .mission-card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col" x-data="{ mobileMenuOpen: false }">
+
+    <!-- TopNavBar Konsisten -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo & Brand Identity -->
+                <div class="flex-shrink-0 flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-[#D3E4DC] rounded-xl flex items-center justify-center text-[#2D4339] font-bold shadow-inner">
+                        🛡️
+                    </div>
+                    <div>
+                        <span class="block text-xs font-semibold tracking-wider text-emerald-700 uppercase">Situs Resmi</span>
+                        <span class="block text-lg font-bold text-emerald-900 tracking-tight">SATPOL PP</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Menu -->
+                <nav class="hidden lg:flex space-x-1">
+                    <a href="index.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50">Beranda</a>
+                    
+                    <!-- Dropdown Profil PD -->
+                    <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave.mouse="open = false">
+                        <button class="px-3 py-2 rounded-lg text-sm font-medium text-emerald-800 bg-[#e8f0ec] flex items-center space-x-1">
+                            <span>Profil PD</span>
+                            <svg class="w-4 h-4 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="open" x-transition class="absolute left-0 w-56 pt-2 z-50" style="display: none;">
+                            <div class="bg-white border border-gray-100 rounded-xl shadow-lg py-2">
+                                <a href="profilpimpinan.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Profil Pimpinan</a>
+                                <a href="sejarah.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Sejarah</a>
+                                <a href="struktur.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Struktur Organisasi</a>
+                                <a href="visimisi.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900 font-bold text-emerald-800">Visi dan Misi</a>
+                                <a href="tugasfungsi.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Tugas dan Fungsi</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="program.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50">Program</a>
+                    <a href="agenda.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50">Agenda Pimpinan</a>
+
+                    <!-- Dropdown Publikasi -->
+                    <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave.mouse="open = false">
+                        <button class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50 flex items-center space-x-1">
+                            <span>Publikasi</span>
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="open" x-transition class="absolute left-0 w-48 pt-2 z-50" style="display: none;">
+                            <div class="bg-white border border-gray-100 rounded-xl shadow-lg py-2">
+                                <a href="berita.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Berita</a>
+                                <a href="detailberita.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Detail Berita</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dropdown Dokumentasi -->
+                    <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave.mouse="open = false">
+                        <button class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50 flex items-center space-x-1">
+                            <span>Dokumentasi</span>
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="open" x-transition class="absolute left-0 w-48 pt-2 z-50" style="display: none;">
+                            <div class="bg-white border border-gray-100 rounded-xl shadow-lg py-2">
+                                <a href="galerikegiatan.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Galeri Foto</a>
+                                <a href="video.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Video Kegiatan</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden lg:flex items-center">
+                    <a href="sarandankritik.html" class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-medium text-white bg-[#557B67] hover:bg-[#436252] transition-colors shadow-sm">
+                        Saran & Kritik
+                    </a>
+                </div>
+
+                <!-- Hamburger Mobile Menu Trigger -->
+                <div class="flex lg:hidden">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="inline-flex items-center justify-center p-2 rounded-xl text-gray-500 hover:text-gray-600 hover:bg-gray-100 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path x-show="mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" style="display: none;"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu Drawer -->
+        <div x-show="mobileMenuOpen" x-transition class="lg:hidden border-t border-gray-100 bg-white px-4 pt-2 pb-6 space-y-1 shadow-inner" style="display: none;">
+            <a href="index.html" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">Beranda</a>
+            
+            <div x-data="{ open: true }">
+                <button @click="open = !open" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium text-emerald-800 bg-[#e8f0ec]">
+                    <span>Profil PD</span>
+                    <svg class="w-4 h-4 transform transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div x-show="open" x-transition class="pl-4 space-y-1 mt-1">
+                    <a href="profilpimpinan.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Profil Pimpinan</a>
+                    <a href="sejarah.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Sejarah</a>
+                    <a href="struktur.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Struktur Organisasi</a>
+                    <a href="visimisi.html" class="block px-3 py-1.5 text-sm text-emerald-900 bg-[#e8f0ec] font-medium rounded-md">Visi dan Misi</a>
+                    <a href="tugasfungsi.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Tugas dan Fungsi</a>
+                </div>
+            </div>
+
+            <a href="program.html" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">Program</a>
+            <a href="agenda.html" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">Agenda Pimpinan</a>
+
+            <div x-data="{ open: false }">
+                <button @click="open = !open" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">
+                    <span>Publikasi</span>
+                    <svg class="w-4 h-4 transform transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div x-show="open" x-transition class="pl-4 space-y-1 mt-1" style="display: none;">
+                    <a href="berita.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Berita</a>
+                    <a href="detailberita.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Detail Berita</a>
+                </div>
+            </div>
+
+            <div x-data="{ open: false }">
+                <button @click="open = !open" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">
+                    <span>Dokumentasi</span>
+                    <svg class="w-4 h-4 transform transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div x-show="open" x-transition class="pl-4 space-y-1 mt-1" style="display: none;">
+                    <a href="galerikegiatan.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Galeri Foto</a>
+                    <a href="video.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Video Kegiatan</a>
+                </div>
+            </div>
+
+            <a href="sarandankritik.html" class="block px-3 py-2 rounded-lg text-base font-medium text-white bg-[#557B67] text-center shadow-sm !mt-4">Saran & Kritik</a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Banner: Visi -->
+        <section class="relative w-full overflow-hidden bg-primary py-24 md:py-32">
+            <!-- Atmospheric Background Texture -->
+            <div class="absolute inset-0 opacity-10 pointer-events-none">
+                <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+            </div>
+            <div class="max-w-container-max mx-auto px-margin-desktop relative z-10">
+                <div class="max-w-4xl">
+                    <span class="inline-block px-3 py-1 bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm uppercase tracking-widest mb-6 rounded-sm">Visi Strategis</span>
+                    <h1 class="font-headline-xl text-headline-xl md:text-5xl text-on-primary leading-tight vision-text-shadow">
+                        Terwujudnya Jakarta yang <span class="text-primary-fixed">Aman</span>, <span class="text-primary-fixed">Tentram</span>, dan <span class="text-primary-fixed">Tertib Hukum</span> menuju Kota Global yang Berdaya Saing.
+                    </h1>
+                </div>
+            </div>
+            <!-- Bottom Accent Line -->
+            <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-primary-fixed to-primary"></div>
+        </section>
+
+        <!-- Breadcrumbs & Section Title -->
+        <div class="bg-surface-container-low border-b border-outline-variant">
+            <div class="max-w-container-max mx-auto px-margin-desktop py-4 flex items-center gap-2 font-label-sm text-label-sm text-on-surface-variant">
+                <span>Profil</span>
+                <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+                <span class="text-primary font-bold">Visi &amp; Misi</span>
+            </div>
+        </div>
+
+        <!-- Mission Section -->
+        <section class="py-24 bg-surface-bright">
+            <div class="max-w-container-max mx-auto px-margin-desktop">
+                <div class="mb-16 text-center">
+                    <h2 class="font-headline-lg text-headline-lg text-primary mb-4">Misi Institusi</h2>
+                    <div class="w-16 h-1 bg-primary-container mx-auto"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                    <!-- Mission Point 1 -->
+                    <div class="mission-card-hover bg-white p-10 border border-outline-variant rounded-lg transition-all duration-300 flex flex-col items-center text-center group">
+                        <div class="w-16 h-16 rounded-full bg-primary-fixed flex items-center justify-center mb-8 group-hover:bg-primary transition-colors">
+                            <span class="material-symbols-outlined text-primary text-3xl group-hover:text-on-primary">policy</span>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md text-primary mb-4">Ketertiban Inklusif</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                            Menyelenggarakan ketentraman dan ketertiban umum yang inklusif untuk seluruh lapisan masyarakat Jakarta.
+                        </p>
+                    </div>
+                    <!-- Mission Point 2 -->
+                    <div class="mission-card-hover bg-white p-10 border border-outline-variant rounded-lg transition-all duration-300 flex flex-col items-center text-center group">
+                        <div class="w-16 h-16 rounded-full bg-primary-fixed flex items-center justify-center mb-8 group-hover:bg-primary transition-colors">
+                            <span class="material-symbols-outlined text-primary text-3xl group-hover:text-on-primary">gavel</span>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md text-primary mb-4">Penegakan Profesional</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                            Menegakkan Peraturan Daerah dan Peraturan Gubernur secara profesional, adil, dan mengedepankan sisi humanis.
+                        </p>
+                    </div>
+                    <!-- Mission Point 3 -->
+                    <div class="mission-card-hover bg-white p-10 border border-outline-variant rounded-lg transition-all duration-300 flex flex-col items-center text-center group">
+                        <div class="w-16 h-16 rounded-full bg-primary-fixed flex items-center justify-center mb-8 group-hover:bg-primary transition-colors">
+                            <span class="material-symbols-outlined text-primary text-3xl group-hover:text-on-primary">potted_plant</span>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md text-primary mb-4">Transformasi Digital</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                            Meningkatkan kualitas pelayanan publik melalui transformasi digital dan perlindungan masyarakat yang responsif.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section (Contextual) -->
+        <section class="py-16 text-on-primary-container overflow-hidden relative bg-primary">
+            <div class="max-w-container-max mx-auto px-margin-desktop flex flex-col md:flex-row items-center justify-between gap-gutter relative z-10">
+                <div class="max-w-2xl">
+                    <h2 class="font-headline-lg text-headline-lg mb-4 text-white">Bersama Menjaga Jakarta</h2>
+                    <p class="font-body-lg text-white opacity-90">Kami berkomitmen untuk memberikan perlindungan dan menjaga ketertiban demi kenyamanan seluruh warga Jakarta.</p>
+                </div>
+                <div class="flex gap-stack-md flex-shrink-0">
+                    <button class="bg-white text-primary px-8 py-3 rounded-lg font-label-md hover:bg-surface-container-low transition-all">Hubungi Kami</button>
+                    <button class="border border-white text-white px-8 py-3 rounded-lg font-label-md hover:bg-white/10 transition-all">Lapor Gangguan</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface-container-highest dark:bg-inverse-surface border-t border-outline-variant">
+        <div class="w-full py-stack-lg px-margin-desktop max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-gutter">
+            <div class="col-span-1 md:col-span-1">
+                <div class="font-headline-sm text-headline-sm font-bold text-primary dark:text-primary-fixed mb-4">Satpol PP</div>
+                <p class="font-body-md text-body-md text-on-surface-variant dark:text-inverse-on-surface mb-4">
+                    Satuan Polisi Pamong Praja Provinsi DKI Jakarta. Menjaga ketertiban, menegakkan hukum daerah.
+                </p>
+            </div>
+            <div class="flex flex-col gap-2">
+                <h4 class="font-label-md text-label-md text-primary dark:text-primary-fixed mb-2">Akses Cepat</h4>
+                <a class="font-body-md text-body-md text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary underline" href="index.html">Beranda</a>
+                <a class="font-body-md text-body-md text-primary dark:text-primary-fixed font-bold" href="#">Visi &amp; Misi</a>
+                <a class="font-body-md text-body-md text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary underline" href="#">Regulasi</a>
+            </div>
+            <div class="flex flex-col gap-2">
+                <h4 class="font-label-md text-label-md text-primary dark:text-primary-fixed mb-2">Informasi</h4>
+                <a class="font-body-md text-body-md text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary underline" href="berita.html">Berita Terkini</a>
+                <a class="font-body-md text-body-md text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary underline" href="galerikegiatan.html">Galeri Kegiatan</a>
+                <a class="font-body-md text-body-md text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary underline" href="struktur.html">Struktur Organisasi</a>
+            </div>
+            <div class="flex flex-col gap-2">
+                <h4 class="font-label-md text-label-md text-primary dark:text-primary-fixed mb-2">Bantuan</h4>
+                <a class="font-body-md text-body-md text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary underline" href="#">Kebijakan Privasi</a>
+                <a class="font-body-md text-body-md text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary underline" href="#">Syarat &amp; Ketentuan</a>
+                <a class="font-body-md text-body-md text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary underline" href="#">Peta Situs</a>
+            </div>
+        </div>
+        <div class="max-w-container-max mx-auto px-margin-desktop py-8 border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="font-label-sm text-label-sm text-on-surface-variant dark:text-on-secondary-fixed-variant">
+                © 2026 Satuan Polisi Pamong Praja. Seluruh Hak Cipta Dilindungi.
+            </p>
+            <div class="flex gap-4">
+                <span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">face_nod</span>
+                <span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">language</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

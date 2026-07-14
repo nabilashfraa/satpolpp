@@ -1,0 +1,416 @@
+<!DOCTYPE html><html class="light" lang="id"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Menambahkan Alpine.js agar dropdown dan mobile menu berfungsi -->
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background-color: #1b4332;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        @media (max-width: 768px) {
+            .timeline-line::before {
+                left: 24px;
+            }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "on-surface": "#191c1d",
+                        "on-surface-variant": "#414844",
+                        "secondary-container": "#dfe0e0",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#e1e3e4",
+                        "primary-fixed-dim": "#a5d0b9",
+                        "on-primary-fixed": "#002114",
+                        "on-background": "#191c1d",
+                        "surface-bright": "#f8f9fa",
+                        "inverse-on-surface": "#f0f1f2",
+                        "outline-variant": "#c1c8c2",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#717973",
+                        "on-tertiary-fixed-variant": "#0e5138",
+                        "surface-dim": "#d9dadb",
+                        "surface-container": "#edeeef",
+                        "tertiary": "#002d1c",
+                        "inverse-surface": "#2e3132",
+                        "surface": "#f8f9fa",
+                        "on-secondary-container": "#616363",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#e7e8e9",
+                        "background": "#f8f9fa",
+                        "primary-fixed": "#c1ecd4",
+                        "surface-tint": "#3f6653",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-primary-fixed-variant": "#274e3d",
+                        "on-secondary-fixed-variant": "#454747",
+                        "error-container": "#ffdad6",
+                        "primary": "#012d1d",
+                        "on-tertiary-fixed": "#002114",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f3f4f5",
+                        "on-tertiary-container": "#75b393",
+                        "on-primary-container": "#86af99",
+                        "secondary": "#5d5f5f",
+                        "tertiary-fixed-dim": "#95d4b3",
+                        "tertiary-container": "#00452e",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#a5d0b9",
+                        "tertiary-fixed": "#b1f0ce",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "primary-container": "#1b4332",
+                        "surface-variant": "#e1e3e4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "margin-desktop": "40px",
+                        "stack-sm": "8px",
+                        "stack-lg": "32px",
+                        "margin-mobile": "16px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<!-- Menginisialisasi state global untuk mobile menu -->
+<body class="bg-background text-on-background font-body-md" x-data="{ mobileMenuOpen: false }">
+ <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <div class="flex-shrink-0 flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-[#D3E4DC] rounded-xl flex items-center justify-center text-[#2D4339] font-bold shadow-inner">
+                        🛡️
+                    </div>
+                    <div>
+                        <span class="block text-xs font-semibold tracking-wider text-emerald-700 uppercase">Situs Resmi</span>
+                        <span class="block text-lg font-bold text-emerald-900 tracking-tight">SATPOL PP</span>
+                    </div>
+                </div>
+
+                <nav class="hidden lg:flex space-x-1">
+                    <a href="index.html" class="px-3 py-2 rounded-lg text-sm font-medium text-emerald-800 bg-[#e8f0ec]">Beranda</a>
+                    
+                    <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                        <button class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50 flex items-center space-x-1">
+                            <span>Profil PD</span>
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="open" x-transition class="absolute left-0 w-56 pt-2 z-50" style="display: none;">
+                            <div class="bg-white border border-gray-100 rounded-xl shadow-lg py-2">
+                                <a href="profilpimpinan.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Profil Pimpinan</a>
+                                <a href="sejarah.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Sejarah</a>
+                                <a href="struktur.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Struktur Organisasi</a>
+                                <a href="visimisi.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Visi dan Misi</a>
+                                <a href="tugasfungsi.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Tugas dan Fungsi</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="program.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50">Program</a>
+                    <a href="agenda.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50">Agenda Pimpinan</a>
+
+                    <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                        <button class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50 flex items-center space-x-1">
+                            <span>Publikasi</span>
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="open" x-transition class="absolute left-0 w-48 pt-2 z-50" style="display: none;">
+                            <div class="bg-white border border-gray-100 rounded-xl shadow-lg py-2">
+                                <a href="berita.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Berita</a>
+                                <a href="detailberita.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Detail Berita</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                        <button class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50 flex items-center space-x-1">
+                            <span>Dokumentasi</span>
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="open" x-transition class="absolute left-0 w-48 pt-2 z-50" style="display: none;">
+                            <div class="bg-white border border-gray-100 rounded-xl shadow-lg py-2">
+                                <a href="galerikegiatan.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Galeri Foto</a>
+                                <a href="video.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Video Kegiatan</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+                <div class="hidden lg:flex items-center">
+                    <a href="sarandankritik.html" class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-medium text-white bg-[#557B67] hover:bg-[#436252] transition-colors shadow-sm">
+                        Saran & Kritik
+                    </a>
+                </div>
+
+                <div class="flex lg:hidden">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="inline-flex items-center justify-center p-2 rounded-xl text-gray-500 hover:text-gray-600 hover:bg-gray-100 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path x-show="mobileMenuOpen" style="display: none;" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div x-show="mobileMenuOpen" x-transition class="lg:hidden border-t border-gray-100 bg-white px-4 pt-2 pb-6 space-y-1 shadow-inner" style="display: none;">
+            <a href="index.html" class="block px-3 py-2 rounded-lg text-base font-medium text-emerald-800 bg-[#e8f0ec]">Beranda</a>
+            
+            <div x-data="{ open: false }">
+                <button @click="open = !open" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">
+                    <span>Profil PD</span>
+                    <svg class="w-4 h-4 transform transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div x-show="open" x-transition class="pl-4 space-y-1 mt-1" style="display: none;">
+                    <a href="profilpimpinan.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Profil Pimpinan</a>
+                    <a href="sejarah.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Sejarah</a>
+                    <a href="struktur.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Struktur Organisasi</a>
+                    <a href="visimisi.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Visi dan Misi</a>
+                    <a href="tugasfungsi.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Tugas dan Fungsi</a>
+                </div>
+            </div>
+
+            <a href="program.html" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">Program</a>
+            <a href="agenda.html" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">Agenda Pimpinan</a>
+
+            <div x-data="{ open: false }">
+                <button @click="open = !open" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">
+                    <span>Publikasi</span>
+                    <svg class="w-4 h-4 transform transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div x-show="open" x-transition class="pl-4 space-y-1 mt-1" style="display: none;">
+                    <a href="berita.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Berita</a>
+                    <a href="detailberita.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Detail Berita</a>
+                </div>
+            </div>
+
+            <div x-data="{ open: false }">
+                <button @click="open = !open" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">
+                    <span>Dokumentasi</span>
+                    <svg class="w-4 h-4 transform transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div x-show="open" x-transition class="pl-4 space-y-1 mt-1" style="display: none;">
+                    <a href="galerikegiatan.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Galeri Foto</a>
+                    <a href="video.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Video Kegiatan</a>
+                </div>
+            </div>
+
+            <a href="sarandankritik.html" class="block px-3 py-2 rounded-lg text-base font-medium text-white bg-[#557B67] text-center shadow-sm !mt-4">Saran & Kritik</a>
+        </div>
+    </header>
+<main class="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg">
+<!-- Hero Section for History Page -->
+<section class="mb-stack-lg">
+<div class="relative w-full h-[300px] md:h-[400px] rounded-xl overflow-hidden mb-gutter">
+<div class="bg-cover bg-center w-full h-full" data-alt="A cinematic, high-resolution wide shot of a historical government building in Jakarta with classical colonial architecture, bathed in soft golden hour sunlight." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAJeFLCIaiDGdRLxjEU-irV0O6qf2Q52edaCeJ8tt_PzbC8pCwbnGOjyVUTUSGBrxIMOBIVaD4bOz9yVZxtxbZR1oDJhhPy461Gro3MxJJWeD1IYlp-b8AHH1nw9KGH3wE3cfY0kwhHy2NsgoY3wt97QDM9NE2THeUwfUyB7qKDNLgkLvssWHloYkTyuonURWLZwz_TSYnc0bf4TwkdMBVhvrpBhC3MMqnEvXTk2UnKBxo46cu_tkC7kbHDwNvzcmxgZ6Vx4Y3N1QI')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-gutter" style="background: linear-gradient(to top, rgba(27, 67, 50, 0.8), transparent);">
+<h1 class="text-on-primary font-headline-xl text-headline-xl mb-base">Sejarah Perangkat Daerah</h1>
+<p class="text-on-primary/90 font-body-lg text-body-lg max-w-2xl">Menelusuri jejak pengabdian Satuan Polisi Pamong Praja dari masa pembentukan hingga era transformasi digital.</p>
+</div>
+</div>
+</section>
+<!-- Interactive Timeline Section -->
+<section class="relative py-gutter">
+<div class="text-center mb-stack-lg">
+<h2 class="text-primary font-headline-lg text-headline-lg">Garis Waktu Perjalanan</h2>
+<div class="w-20 h-1 bg-primary mx-auto mt-base rounded-full" style="background-color: rgb(27, 67, 50);"></div>
+</div>
+<div class="timeline-line relative max-w-5xl mx-auto py-stack-lg border-primary/20">
+<!-- 1950: Pembentukan Resmi -->
+<div class="timeline-item relative grid grid-cols-1 md:grid-cols-2 gap-gutter mb-stack-lg items-center opacity-0 translate-y-10">
+<div class="md:text-right md:pr-12 order-2 md:order-1">
+<div class="bg-surface-container-lowest p-stack-md rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+<span class="text-primary font-headline-md text-headline-md block mb-base">1950</span>
+<h3 class="font-bold text-on-surface text-body-lg mb-sm">Pembentukan Resmi</h3>
+<p class="text-on-surface-variant font-body-md">Satuan Polisi Pamong Praja secara resmi dibentuk pada 3 Maret 1950 di Yogyakarta sebagai institusi penegak peraturan daerah dan penjaga ketertiban umum.</p>
+</div>
+</div>
+<div class="absolute left-0 md:left-1/2 transform -translate-x-1/2 z-10 flex items-center justify-center order-1 md:order-2">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center shadow-lg border-4 border-surface">
+<span class="material-symbols-outlined text-on-primary" style="font-variation-settings: 'FILL' 1;">history</span>
+</div>
+</div>
+<div class="md:pl-12 order-3">
+<div class="rounded-xl overflow-hidden border border-outline-variant">
+<img class="w-full h-48 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHYIXsg9wL3f-fVjgS9v9Sbzokb-5aaU4ZLy8PlmAnw0Wzs7YwkE3-MH-u__YuZJ_VTlPq6JUBl8BlN_uaXsIwbun9g-41Zy9XhMNG2xqtK9H6jKYqFM0gCUuU1nA3exbHp7lvzuuGttJYk7yH1WYgSDGstwgs_38iBU8Cn99KOvGf7O8SM8L5mahFyoY6xxrcNEi4dndaS4G18axq1kpSyfTw2ukNU-K4SJLJ8r3Z9smAllkvvQWrZqLmlOOpUDN006yTxLyQKPo">
+</div>
+</div>
+</div>
+<!-- 1960-2000: Era Penyesuaian -->
+<div class="timeline-item relative grid grid-cols-1 md:grid-cols-2 gap-gutter mb-stack-lg items-center opacity-0 translate-y-10">
+<div class="hidden md:block md:pr-12 order-1">
+<div class="rounded-xl overflow-hidden border border-outline-variant">
+<img class="w-full h-48 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkcOeKeYWF0zYVzaHiW9GUXoBKCkpuAPRbL6ornqo60UpW4N98NSup0RW_0-cn0KNl3tTTYvWdn90pKRyFt-p_EzaWDmP7l-MGMZIKmn9YBz5U_8fHyY0rqHkakEWWQM2MYPTaV8jRH33ILwp7s90M67BBE1-4AH6y_g1CSnefPQthoe26zeeA6oQ2Z_Oe0QdjVtHiePRIURpYeuGfrPsVtlStrJKPXD_uhWuRfBJ-BMJoisRvnxZiQj8cDvITCKlAIvOuimd72Rw">
+</div>
+</div>
+<div class="absolute left-0 md:left-1/2 transform -translate-x-1/2 z-10 flex items-center justify-center order-2">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center shadow-lg border-4 border-surface">
+<span class="material-symbols-outlined text-on-primary" style="font-variation-settings: 'FILL' 1;">update</span>
+</div>
+</div>
+<div class="md:pl-12 order-3">
+<div class="bg-surface-container-lowest p-stack-md rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+<span class="text-primary font-headline-md text-headline-md block mb-base">1960 - 2000</span>
+<h3 class="font-bold text-on-surface text-body-lg mb-sm">Era Penyesuaian</h3>
+<p class="text-on-surface-variant font-body-md">Selama beberapa dekade, Satpol PP mengalami berbagai penyesuaian regulasi dan struktur organisasi guna merespons dinamika sosial politik Indonesia yang berkembang pesat.</p>
+</div>
+</div>
+</div>
+<!-- 2010: Modernisasi Operasional -->
+<div class="timeline-item relative grid grid-cols-1 md:grid-cols-2 gap-gutter mb-stack-lg items-center opacity-0 translate-y-10">
+<div class="md:text-right md:pr-12 order-2 md:order-1">
+<div class="bg-surface-container-lowest p-stack-md rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+<span class="text-primary font-headline-md text-headline-md block mb-base">2010</span>
+<h3 class="font-bold text-on-surface text-body-lg mb-sm">Modernisasi Operasional</h3>
+<p class="text-on-surface-variant font-body-md">Langkah besar diambil dengan memperkuat kapasitas personel melalui pelatihan semi-militer yang disiplin, perlengkapan modern, dan SOP yang lebih humanis dalam penegakan Perda.</p>
+</div>
+</div>
+<div class="absolute left-0 md:left-1/2 transform -translate-x-1/2 z-10 flex items-center justify-center order-1 md:order-2">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center shadow-lg border-4 border-surface">
+<span class="material-symbols-outlined text-on-primary" style="font-variation-settings: 'FILL' 1;">public</span>
+</div>
+</div>
+<div class="md:pl-12 order-3">
+<div class="rounded-xl overflow-hidden border border-outline-variant">
+<img class="w-full h-48 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK-ZFl5jvljjYuhGXtd_fMJGDHgMEDI03vj0VMm-EAB8iDj_aroZ_crHuQPS8PWihJLHHA6jGj7GjtlelMDt2hMr5OcKsU3PAVFCQgxPCClHLKN12r-gwfJoplDyechernXtfYUevDT0IrHbYkFQkElGmrvqUxwG70CO0FHBhLXW8H9NElyMh17KNcJl_WJud-SfURi2x7eKAEWL-B_mG_TVliHzFZVZsz_W-rjSPgiLz4QoM32fbVsQoE9kVlv4HUZ9jlC3o5CMY">
+</div>
+</div>
+</div>
+<!-- Sekarang: Transformasi Digital -->
+<div class="timeline-item relative grid grid-cols-1 md:grid-cols-2 gap-gutter mb-stack-lg items-center opacity-0 translate-y-10">
+<div class="hidden md:block md:pr-12 order-1">
+<div class="rounded-xl overflow-hidden border border-outline-variant p-4 bg-primary-container/10">
+<div class="w-full h-40 bg-surface rounded-lg flex items-center justify-center border-2 border-dashed border-primary/20">
+<span class="material-symbols-outlined text-primary text-6xl" style="font-variation-settings: 'wght' 200;">monitoring</span>
+</div>
+</div>
+</div>
+<div class="absolute left-0 md:left-1/2 transform -translate-x-1/2 z-10 flex items-center justify-center order-2">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center shadow-lg border-4 border-surface animate-pulse">
+<span class="material-symbols-outlined text-on-primary" style="font-variation-settings: 'FILL' 1;">computer</span>
+</div>
+</div>
+<div class="md:pl-12 order-3">
+<div class="bg-primary-container p-stack-md rounded-xl border border-primary-fixed shadow-md transform hover:scale-[1.02] transition-transform">
+<span class="text-primary-fixed font-headline-md text-headline-md block mb-base">Sekarang</span>
+<h3 class="font-bold text-on-primary text-body-lg mb-sm">Transformasi Digital</h3>
+<p class="text-on-primary-container font-body-md">Era Satpol PP Digital HQ. Integrasi teknologi melalui pelaporan real-time, Command Center terpadu, dan transparansi publik berbasis data untuk pelayanan yang lebih responsif.</p>
+<div class="mt-stack-md flex gap-base">
+<span class="inline-flex items-center rounded-full bg-primary px-3 py-1 text-label-sm font-bold text-on-primary uppercase tracking-wider">Innovation</span>
+<span class="inline-flex items-center rounded-full bg-primary px-3 py-1 text-label-sm font-bold text-on-primary uppercase tracking-wider">AI Integration</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Counter Section -->
+<section class="mt-stack-lg grid grid-cols-2 md:grid-cols-4 gap-gutter text-center">
+<div class="p-stack-md bg-surface-container-high rounded-xl">
+<span class="block text-headline-lg font-headline-lg text-primary">74+</span>
+<span class="text-label-md font-label-md text-on-surface-variant">Tahun Pengabdian</span>
+</div>
+<div class="p-stack-md bg-surface-container-high rounded-xl">
+<span class="block text-headline-lg font-headline-lg text-primary">2.5k+</span>
+<span class="text-label-md font-label-md text-on-surface-variant">Personel Terlatih</span>
+</div>
+<div class="p-stack-md bg-surface-container-high rounded-xl">
+<span class="block text-headline-lg font-headline-lg text-primary">100%</span>
+<span class="text-label-md font-label-md text-on-surface-variant">Digital Ops</span>
+</div>
+<div class="p-stack-md bg-surface-container-high rounded-xl">
+<span class="block text-headline-lg font-headline-lg text-primary">24/7</span>
+<span class="text-label-md font-label-md text-on-surface-variant">Respon Siaga</span>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-on-surface text-surface mt-stack-lg">
+<div class="w-full py-stack-lg px-margin-desktop flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto">
+<div class="mb-stack-md md:mb-0">
+<div class="text-label-md font-label-md font-bold text-surface mb-base">Satpol PP Digital HQ</div>
+<p class="text-surface-variant font-body-md">© 2024 Satuan Polisi Pamong Praja. Seluruh Hak Cipta Dilindungi.</p>
+</div>
+<div class="flex gap-gutter">
+<a class="text-surface-variant hover:text-primary-fixed-dim transition-colors font-label-sm" href="#">Kebijakan Privasi</a>
+<a class="text-surface-variant hover:text-primary-fixed-dim transition-colors font-label-sm" href="#">Kontak Kami</a>
+<a class="text-surface-variant hover:text-primary-fixed-dim transition-colors font-label-sm" href="#">Peta Situs</a>
+</div>
+</div>
+</footer>
+
+<script>
+        // Micro-interactions untuk timeline items on scroll (diperbaiki menggunakan class khusus)
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        observer.unobserve(entry.target); // Stop observing setelah animasi jalan
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.timeline-item').forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+</body></html>
