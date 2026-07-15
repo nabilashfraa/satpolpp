@@ -356,6 +356,24 @@
                 link.classList.remove('scale-95');
             });
         });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Aksi tombol pada section komitmen/CTA
+            const btnHubungi = document.getElementById('btn-hubungi');
+            const btnLapor = document.getElementById('btn-lapor');
+
+            if(btnHubungi) {
+                btnHubungi.addEventListener('click', () => {
+                    window.location.href = 'sarandankritik.html';
+                });
+            }
+
+            if(btnLapor) {
+                btnLapor.addEventListener('click', () => {
+                    alert('Fungsi Pelaporan: Anda akan diarahkan ke sistem integrasi aduan cepat CRM Jakarta.');
+                });
+            }
+        });
     </script>
 
 </body></html>
