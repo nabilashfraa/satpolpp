@@ -1,47 +1,311 @@
-<!-- Social Share Interaktif dengan Menu Titik Tiga (Aman & Bebas Error Layar Putih) -->
-<div class="mt-stack-lg pt-stack-md border-t border-outline-variant flex flex-row items-center justify-between gap-4 relative">
-    <span class="font-bold text-primary">Bagikan Berita:</span>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Situs Resmi SATPOL PP - Detail Berita</title>
     
-    <!-- Pemicu Dropdown Menu Menggunakan Alpine.js -->
-    <div class="relative" x-data="{ shareOpen: false }" @click.away="shareOpen = false">
-        <!-- Tombol Titik Tiga -->
-        <button @click="shareOpen = !shareOpen" class="flex items-center justify-center p-2 bg-surface-container-highest hover:bg-outline-variant rounded-full transition-colors focus:outline-none" aria-label="Pilihan bagikan">
-            <span class="material-symbols-outlined text-secondary font-bold">more_vert</span>
-        </button>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Material Symbols (Ikon) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    
+    <!-- Alpine.js CDN (Wajib untuk menghidupkan interaksi menu & titik tiga) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-        <!-- Daftar Fitur & Sub-fitur Share -->
-        <div x-show="shareOpen" 
-             x-transition:enter="transition ease-out duration-100"
-             x-transition:enter-start="opacity-0 scale-95"
-             x-transition:enter-end="opacity-100 scale-100"
-             x-transition:leave="transition ease-in duration-75"
-             x-transition:leave-start="opacity-100 scale-100"
-             x-transition:leave-end="opacity-0 scale-95"
-             class="absolute right-0 bottom-full mb-2 w-48 bg-white border border-outline-variant rounded-xl shadow-xl py-2 z-40"
+    <!-- Konfigurasi Custom Tema Tailwind (Menyesuaikan variabel kelas Anda) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#0F172A',
+                        'primary-fixed': '#E2E8F0',
+                        'secondary': '#475569',
+                        'on-primary': '#FFFFFF',
+                        'on-surface-variant': '#334155',
+                        'surface-container-low': '#F8FAFC',
+                        'surface-container-highest': '#E2E8F0',
+                        'outline-variant': '#CBD5E1',
+                    },
+                    spacing: {
+                        'margin-desktop': '2rem',
+                        'stack-md': '1.5rem',
+                        'stack-lg': '2.5rem',
+                    },
+                    maxWidth: {
+                        'container-max': '1280px',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased">
+
+    <!-- HEADER / NAVIGASI UTAMA -->
+    <header x-data="{ mobileMenuOpen: false }" class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-outline-variant shadow-sm">
+        <div class="max-w-container-max mx-auto px-4 sm:px-6 lg:px-margin-desktop">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-primary-fixed flex items-center justify-center text-primary font-bold shadow-inner rounded-xl">
+                        ☸
+                    </div>
+                    <div>
+                        <span class="block text-[10px] font-semibold tracking-wider text-primary uppercase">Situs Resmi</span>
+                        <span class="block text-lg font-bold text-primary tracking-tight">SATPOL PP</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav (Hidden di Mobile) -->
+                <nav class="hidden lg:flex space-x-1">
+                    <a href="index.html" class="px-3 py-2 rounded-lg text-sm font-medium text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors">Beranda</a>
+                    
+                    <!-- Dropdown Profil PD -->
+                    <div class="relative group">
+                        <button class="px-3 py-2 rounded-lg text-sm font-medium text-on-surface-variant hover:text-primary hover:bg-surface-container-low flex items-center space-x-1 transition-colors">
+                            <span>Profil PD</span>
+                            <span class="material-symbols-outlined text-[16px]">expand_more</span>
+                        </button>
+                        <div class="absolute left-0 w-56 pt-2 z-50 hidden group-hover:block">
+                            <div class="bg-white border border-outline-variant rounded-xl shadow-lg py-2">
+                                <a href="profilpimpinan.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Profil Pimpinan</a>
+                                <a href="sejarah.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Sejarah</a>
+                                <a href="struktur.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Struktur Organisasi</a>
+                                <a href="visimisi.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Visi dan Misi</a>
+                                <a href="tugasfungsi.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Tugas dan Fungsi</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="program.html" class="px-3 py-2 rounded-lg text-sm font-medium text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors">Program</a>
+                    <a href="agenda.html" class="px-3 py-2 rounded-lg text-sm font-medium text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors">Agenda Pimpinan</a>
+
+                    <!-- Dropdown Publikasi -->
+                    <div class="relative group">
+                        <button class="px-3 py-2 rounded-lg text-sm font-medium text-on-surface-variant hover:text-primary hover:bg-surface-container-low flex items-center space-x-1 transition-colors">
+                            <span>Publikasi</span>
+                            <span class="material-symbols-outlined text-[16px]">expand_more</span>
+                        </button>
+                        <div class="absolute left-0 w-48 pt-2 z-50 hidden group-hover:block">
+                            <div class="bg-white border border-outline-variant rounded-xl shadow-lg py-2">
+                                <a href="berita.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Berita</a>
+                                <a href="detailberita.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Detail Berita</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dropdown Dokumentasi -->
+                    <div class="relative group">
+                        <button class="px-3 py-2 rounded-lg text-sm font-medium text-on-surface-variant hover:text-primary hover:bg-surface-container-low flex items-center space-x-1 transition-colors">
+                            <span>Dokumentasi</span>
+                            <span class="material-symbols-outlined text-[16px]">expand_more</span>
+                        </button>
+                        <div class="absolute left-0 w-48 pt-2 z-50 hidden group-hover:block">
+                            <div class="bg-white border border-outline-variant rounded-xl shadow-lg py-2">
+                                <a href="galerikegiatan.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Galeri Foto</a>
+                                <a href="video.html" class="block px-4 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Video Kegiatan</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Desktop Action Button -->
+                <div class="hidden lg:flex items-center">
+                    <a href="sarandankritik.html" class="inline-flex items-center justify-center px-5 py-2 rounded-lg text-sm font-medium text-on-primary bg-primary hover:opacity-90 transition-opacity shadow-sm">
+                        Saran &amp; Kritik
+                    </a>
+                </div>
+
+                <!-- Hamburger Button Mobile -->
+                <div class="flex lg:hidden">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="inline-flex items-center justify-center p-2 rounded-xl text-on-surface-variant hover:bg-surface-container-low focus:outline-none">
+                        <span class="material-symbols-outlined" x-text="mobileMenuOpen ? 'close' : 'menu'">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Konten Menu Mobile (Slide Down / Toggle) -->
+        <div x-show="mobileMenuOpen" 
+             x-transition:enter="transition ease-out duration-200"
+             x-transition:enter-start="opacity-0 -translate-y-2"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             x-transition:leave="transition ease-in duration-150"
+             x-transition:leave-start="opacity-100 translate-y-0"
+             x-transition:leave-end="opacity-0 -translate-y-2"
+             class="lg:hidden bg-white border-t border-outline-variant px-4 pt-2 pb-6 space-y-1 shadow-md"
              style="display: none;">
             
-            <!-- Menggunakan fungsi JavaScript 'shareKe' yang aman -->
-            <button @click="shareKe('facebook')" class="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-surface-container-low hover:text-[#1877F2] transition-colors text-left">
-                <span class="material-symbols-outlined text-base">share</span>
-                <span>Facebook</span>
-            </button>
+            <a href="index.html" class="block px-3 py-2 rounded-lg text-base font-medium text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Beranda</a>
             
-            <button @click="shareKe('twitter')" class="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-surface-container-low hover:text-[#1DA1F2] transition-colors text-left">
-                <span class="material-symbols-outlined text-base">share</span>
-                <span>X / Twitter</span>
-            </button>
-            
-            <button @click="shareKe('whatsapp')" class="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-surface-container-low hover:text-[#25D366] transition-colors text-left">
-                <span class="material-symbols-outlined text-base">chat</span>
-                <span>WhatsApp</span>
-            </button>
+            <!-- Accordion Profil Mobile -->
+            <div x-data="{ open: false }">
+                <button @click="open = !open" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium text-on-surface-variant hover:bg-surface-container-low hover:text-primary">
+                    <span>Profil PD</span>
+                    <span class="material-symbols-outlined transition-transform duration-200" :class="{ 'rotate-180': open }">expand_more</span>
+                </button>
+                <div x-show="open" class="pl-4 space-y-1 mt-1">
+                    <a href="profilpimpinan.html" class="block px-3 py-1.5 text-sm text-secondary hover:text-primary">Profil Pimpinan</a>
+                    <a href="sejarah.html" class="block px-3 py-1.5 text-sm text-secondary hover:text-primary">Sejarah</a>
+                    <a href="struktur.html" class="block px-3 py-1.5 text-sm text-secondary hover:text-primary">Struktur Organisasi</a>
+                    <a href="visimisi.html" class="block px-3 py-1.5 text-sm text-secondary hover:text-primary">Visi dan Misi</a>
+                    <a href="tugasfungsi.html" class="block px-3 py-1.5 text-sm text-secondary hover:text-primary">Tugas dan Fungsi</a>
+                </div>
+            </div>
 
-            <hr class="border-outline-variant my-1">
+            <a href="program.html" class="block px-3 py-2 rounded-lg text-base font-medium text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Program</a>
+            <a href="agenda.html" class="block px-3 py-2 rounded-lg text-base font-medium text-on-surface-variant hover:bg-surface-container-low hover:text-primary">Agenda Pimpinan</a>
 
-            <button @click="salinTautan(); shareOpen = false" class="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-surface-container-low hover:text-primary transition-colors text-left">
-                <span class="material-symbols-outlined text-base">link</span>
-                <span>Salin Tautan</span>
-            </button>
+            <!-- Accordion Publikasi Mobile -->
+            <div x-data="{ open: false }">
+                <button @click="open = !open" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium text-on-surface-variant hover:bg-surface-container-low hover:text-primary">
+                    <span>Publikasi</span>
+                    <span class="material-symbols-outlined transition-transform duration-200" :class="{ 'rotate-180': open }">expand_more</span>
+                </button>
+                <div x-show="open" class="pl-4 space-y-1 mt-1">
+                    <a href="berita.html" class="block px-3 py-1.5 text-sm text-secondary hover:text-primary">Berita</a>
+                    <a href="detailberita.html" class="block px-3 py-1.5 text-sm text-secondary hover:text-primary">Detail Berita</a>
+                </div>
+            </div>
+
+            <!-- Accordion Dokumentasi Mobile -->
+            <div x-data="{ open: false }">
+                <button @click="open = !open" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium text-on-surface-variant hover:bg-surface-container-low hover:text-primary">
+                    <span>Dokumentasi</span>
+                    <span class="material-symbols-outlined transition-transform duration-200" :class="{ 'rotate-180': open }">expand_more</span>
+                </button>
+                <div x-show="open" class="pl-4 space-y-1 mt-1">
+                    <a href="galerikegiatan.html" class="block px-3 py-1.5 text-sm text-secondary hover:text-primary">Galeri Foto</a>
+                    <a href="video.html" class="block px-3 py-1.5 text-sm text-secondary hover:text-primary">Video Kegiatan</a>
+                </div>
+            </div>
+
+            <div class="pt-4">
+                <a href="sarandankritik.html" class="block w-full text-center py-2.5 rounded-lg text-sm font-medium text-on-primary bg-primary shadow-sm">
+                    Saran &amp; Kritik
+                </a>
+            </div>
         </div>
-    </div>
-</div>
+    </header>
+
+    <!-- AREA UTAMA KONTEN ARTIKEL -->
+    <main class="max-w-4xl mx-auto px-4 py-8 sm:px-6 lg:py-12">
+        <article class="bg-white rounded-2xl border border-outline-variant p-6 sm:p-8 shadow-sm">
+            
+            <!-- Info Header Artikel -->
+            <div class="mb-6">
+                <span class="inline-block bg-primary-fixed text-primary text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3">Keamanan & Ketertiban</span>
+                <h1 class="text-2xl sm:text-4xl font-extrabold text-primary tracking-tight leading-tight">Satpol PP Lakukan Patroli Pengamanan Wilayah Protokol</h1>
+                <p class="text-sm text-secondary mt-2">Diterbitkan pada: 15 Juli 2026 • Oleh Admin</p>
+            </div>
+
+            <!-- Gambar Utama / Ilustrasi Konten -->
+            <div class="w-full h-64 sm:h-96 bg-slate-200 rounded-xl mb-6 flex items-center justify-center text-slate-400">
+                <span class="material-symbols-outlined text-6xl">image</span>
+            </div>
+
+            <!-- Isi Paragraf Konten -->
+            <div class="prose max-w-none text-on-surface-variant space-y-4 leading-relaxed">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+
+            <!-- AREA SOCIAL SHARE (TEMA TITIK TIGA - SWIPE UP COMPATIBLE) -->
+            <div class="mt-stack-lg pt-stack-md border-t border-outline-variant flex flex-row items-center justify-between gap-4 relative">
+                <span class="font-bold text-primary text-sm sm:text-base">Bagikan Berita:</span>
+                
+                <!-- Dropdown Kontrol Menu Titik Tiga -->
+                <div class="relative" x-data="{ shareOpen: false }" @click.away="shareOpen = false">
+                    <!-- Tombol Pemicu Titik Tiga -->
+                    <button @click="shareOpen = !shareOpen" class="flex items-center justify-center p-2.5 bg-surface-container-low hover:bg-surface-container-highest rounded-full border border-outline-variant transition-colors focus:outline-none" aria-label="Pilihan bagikan">
+                        <span class="material-symbols-outlined text-secondary font-bold">more_vert</span>
+                    </button>
+
+                    <!-- Menu List Sub Fitur Share (Muncul Ke Atas / Bottom-full agar pas di layar hp) -->
+                    <div x-show="shareOpen" 
+                         x-transition:enter="transition ease-out duration-100"
+                         x-transition:enter-start="opacity-0 scale-95"
+                         x-transition:enter-end="opacity-100 scale-100"
+                         x-transition:leave="transition ease-in duration-75"
+                         x-transition:leave-start="opacity-100 scale-100"
+                         x-transition:leave-end="opacity-0 scale-95"
+                         class="absolute right-0 bottom-full mb-3 w-48 bg-white border border-outline-variant rounded-xl shadow-xl py-2 z-40"
+                         style="display: none;">
+                        
+                        <!-- Aksi Fitur Share Langsung Buka Halaman Halaman Baru -->
+                        <button @click="shareKe('facebook')" class="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-slate-100 hover:text-[#1877F2] transition-colors text-left">
+                            <span class="material-symbols-outlined text-base">share</span>
+                            <span>Facebook</span>
+                        </button>
+                        
+                        <button @click="shareKe('twitter')" class="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-slate-100 hover:text-[#1DA1F2] transition-colors text-left">
+                            <span class="material-symbols-outlined text-base">share</span>
+                            <span>X / Twitter</span>
+                        </button>
+                        
+                        <button @click="shareKe('whatsapp')" class="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-slate-100 hover:text-[#25D366] transition-colors text-left">
+                            <span class="material-symbols-outlined text-base">chat</span>
+                            <span>WhatsApp</span>
+                        </button>
+
+                        <hr class="border-outline-variant my-1">
+
+                        <!-- Tombol Salin Tautan Berita -->
+                        <button @click="salinTautan(); shareOpen = false" class="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-slate-100 hover:text-slate-900 transition-colors text-left">
+                            <span class="material-symbols-outlined text-base">link</span>
+                            <span>Salin Tautan</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </article>
+    </main>
+
+    <!-- LOGIKA JAVASCRIPT SISTEM (Di bagian paling bawah sebelum tag body penutup) -->
+    <script>
+        /**
+         * Fungsi global untuk menghandle aksi klik berbagi media sosial secara aman.
+         * Mendapatkan URL halaman saat ini secara otomatis dan membuka jendela aplikasi baru (_blank).
+         */
+        function shareKe(platform) {
+            const urlSekarang = encodeURIComponent(window.location.href);
+            const teksBerita = encodeURIComponent(document.title || "Berita Informasi Satpol PP");
+            let urlTujuan = "";
+
+            switch (platform) {
+                case 'facebook':
+                    urlTujuan = `https://www.facebook.com/sharer/sharer.php?u=${urlSekarang}`;
+                    break;
+                case 'twitter':
+                    urlTujuan = `https://twitter.com/intent/tweet?url=${urlSekarang}&text=${teksBerita}`;
+                    break;
+                case 'whatsapp':
+                    urlTujuan = `https://api.whatsapp.com/send?text=${teksBerita}%20${urlSekarang}`;
+                    break;
+            }
+
+            if (urlTujuan) {
+                window.open(urlTujuan, '_blank');
+            }
+        }
+
+        /**
+         * Fungsi pembantu untuk menyalin URL tautan berita secara langsung ke dalam clipboard perangkat.
+         */
+        function salinTautan() {
+            navigator.clipboard.writeText(window.location.href)
+                .then(() => {
+                    alert('Tautan berita berhasil disalin ke clipboard ponsel Anda!');
+                })
+                .catch(() => {
+                    alert('Gagal menyalin secara otomatis. Silakan salin URL dari address bar browser Anda.');
+                });
+        }
+    </script>
+</body>
+</html>
