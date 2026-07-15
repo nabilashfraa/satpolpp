@@ -331,48 +331,20 @@
 </div>
 </footer>
 <script>
-        // Micro-interaction for scroll effects
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 20) {
-                header.classList.add('shadow-md');
-                header.classList.remove('shadow-sm');
-            } else {
-                header.classList.add('shadow-sm');
-                header.classList.remove('shadow-md');
-            }
+        const carousel = document.getElementById('carousel');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentSlide = 0;
+        const totalSlides = 1;
+
+        prevBtn?.addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            carousel.scrollTo({ left: carousel.offsetWidth * currentSlide, behavior: 'smooth' });
         });
 
-        // Add smooth scale effect to active news links
-        document.querySelectorAll('article a, aside a').forEach(link => {
-            link.addEventListener('mousedown', () => {
-                link.classList.add('scale-95');
-                link.style.transition = 'transform 0.15s ease';
-            });
-            link.addEventListener('mouseup', () => {
-                link.classList.remove('scale-95');
-            });
-            link.addEventListener('mouseleave', () => {
-                link.classList.remove('scale-95');
-            });
-        });
-
-        document.addEventListener('DOMContentLoaded', () => {
-            // Aksi tombol pada section komitmen/CTA
-            const btnHubungi = document.getElementById('btn-hubungi');
-            const btnLapor = document.getElementById('btn-lapor');
-
-            if(btnHubungi) {
-                btnHubungi.addEventListener('click', () => {
-                    window.location.href = 'sarandankritik.html';
-                });
-            }
-
-            if(btnLapor) {
-                btnLapor.addEventListener('click', () => {
-                    alert('Fungsi Pelaporan: Anda akan diarahkan ke sistem integrasi aduan cepat CRM Jakarta.');
-                });
-            }
+        nextBtn?.addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            carousel.scrollTo({ left: carousel.offsetWidth * currentSlide, behavior: 'smooth' });
         });
     </script>
 
