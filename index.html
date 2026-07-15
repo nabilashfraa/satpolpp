@@ -1,6 +1,88 @@
-<body class="text-on-surface" x-data="{ mobileMenuOpen: false }">
+<!DOCTYPE html>
+<html class="light" lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Satpol PP Digital HQ - Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "primary": "#1b4332",
+                "on-primary": "#ffffff",
+                "primary-container": "#1b4332",
+                "on-primary-container": "#ffffff",
+                "secondary": "#1b4332",
+                "on-secondary": "#ffffff",
+                "background": "#f8f9fa",
+                "on-background": "#191c1d",
+                "surface": "#f8f9fa",
+                "on-surface": "#191c1d",
+                "surface-variant": "#e1e3e4",
+                "on-surface-variant": "#414844",
+                "outline": "#717973",
+                "outline-variant": "#c1c8c2",
+                "surface-container-low": "#f3f4f5",
+                "surface-container": "#edeeef",
+                "surface-container-high": "#e7e8e9",
+                "surface-container-highest": "#e1e3e4",
+                "brand-dark": "#1b4332",
+                "brand-highlight": "#1b4332"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.375rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "container-max": "1280px",
+                "stack-sm": "8px",
+                "base": "8px",
+                "gutter": "24px",
+                "margin-desktop": "40px",
+                "margin-mobile": "16px",
+                "stack-md": "16px",
+                "stack-lg": "32px"
+            },
+            "fontFamily": {
+                "sans": ["Inter", "sans-serif"]
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .carousel-container {
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+        }
+        .carousel-container::-webkit-scrollbar {
+            display: none;
+        }
+        /* Style tambahan untuk animasi CSS drawer */
+        #mobileDrawer {
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="text-on-surface">
 
-    <!-- HEADER / NAVIGATION BASE -->
+    <!-- HEADER / NAVIGATION (DESKTOP & MOBILE TRIGGER) -->
     <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
@@ -16,17 +98,17 @@
                     </div>
                 </div>
 
-                <!-- Desktop Navigation (Tampil Hanya di Layar Besar) -->
+                <!-- Desktop Navigation Menu (Hover Base CSS Dropdown) -->
                 <nav class="hidden lg:flex space-x-1">
                     <a href="index.html" class="px-3 py-2 rounded-lg text-sm font-medium text-emerald-800 bg-[#e8f0ec]">Beranda</a>
                     
                     <!-- Profil PD Dropdown -->
-                    <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                        <button class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50 flex items-center space-x-1">
+                    <div class="relative group py-2">
+                        <button class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 group-hover:text-emerald-900 group-hover:bg-gray-50 flex items-center space-x-1">
                             <span>Profil PD</span>
                             <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
-                        <div x-show="open" x-transition class="absolute left-0 w-56 pt-2 z-50">
+                        <div class="absolute left-0 w-56 pt-2 hidden group-hover:block z-50">
                             <div class="bg-white border border-gray-100 rounded-xl shadow-lg py-2">
                                 <a href="profilpimpinan.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Profil Pimpinan</a>
                                 <a href="sejarah.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Sejarah</a>
@@ -41,12 +123,12 @@
                     <a href="agenda.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50">Agenda Pimpinan</a>
 
                     <!-- Publikasi Dropdown -->
-                    <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                        <button class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50 flex items-center space-x-1">
+                    <div class="relative group py-2">
+                        <button class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 group-hover:text-emerald-900 group-hover:bg-gray-50 flex items-center space-x-1">
                             <span>Publikasi</span>
                             <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
-                        <div x-show="open" x-transition class="absolute left-0 w-48 pt-2 z-50">
+                        <div class="absolute left-0 w-48 pt-2 hidden group-hover:block z-50">
                             <div class="bg-white border border-gray-100 rounded-xl shadow-lg py-2">
                                 <a href="berita.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Berita</a>
                                 <a href="detailberita.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Detail Berita</a>
@@ -55,12 +137,12 @@
                     </div>
 
                     <!-- Dokumentasi Dropdown -->
-                    <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                        <button class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50 flex items-center space-x-1">
+                    <div class="relative group py-2">
+                        <button class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 group-hover:text-emerald-900 group-hover:bg-gray-50 flex items-center space-x-1">
                             <span>Dokumentasi</span>
                             <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
-                        <div x-show="open" x-transition class="absolute left-0 w-48 pt-2 z-50">
+                        <div class="absolute left-0 w-48 pt-2 hidden group-hover:block z-50">
                             <div class="bg-white border border-gray-100 rounded-xl shadow-lg py-2">
                                 <a href="galerikegiatan.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Galeri Foto</a>
                                 <a href="video.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Video Kegiatan</a>
@@ -76,12 +158,11 @@
                     </a>
                 </div>
 
-                <!-- Tombol Hamburger Mobile (Sekarang Mengontrol mobileMenuOpen dengan Benar) -->
+                <!-- Tombol Hamburger Mobile (Pure JS Trigger) -->
                 <div class="flex lg:hidden">
-                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="inline-flex items-center justify-center p-2 rounded-xl text-gray-500 hover:text-gray-600 hover:bg-gray-100 focus:outline-none">
+                    <button id="hamburgerBtn" type="button" class="inline-flex items-center justify-center p-2 rounded-xl text-gray-500 hover:text-gray-600 hover:bg-gray-100 focus:outline-none">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                            <path x-show="mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
                     </button>
                 </div>
@@ -89,16 +170,15 @@
         </div>
     </header>
 
-    <!-- SATU-SATUNYA NAVIGATION DRAWER MOBILE (Z-Index Tinggi & Terintegrasi) -->
-    <div class="fixed inset-0 z-[200] lg:hidden" x-show="mobileMenuOpen" x-cloak style="display: none;">
-        <!-- Backdrop transparan gelap -->
-        <div class="fixed inset-0 bg-black/50 transition-opacity" @click="mobileMenuOpen = false"></div>
+    <!-- HANYA ADA SATU DRAWER MOBILE (Menggunakan Pure JS Pointer-Events Aman & Stabil) -->
+    <div id="mobileDrawer" class="fixed inset-0 z-[200] lg:hidden hidden">
+        <!-- Lapisan Gelap Belakang Drawer -->
+        <div id="drawerBackdrop" class="fixed inset-0 bg-black/50 transition-opacity"></div>
 
-        <!-- Konten Drawer Menu -->
-        <div class="fixed inset-y-0 left-0 w-72 bg-white shadow-lg flex flex-col p-4 transform transition-transform duration-300 ease-in-out"
-             :class="mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'">
+        <!-- Konten Panel Drawer Navigasi Mobile -->
+        <div id="drawerContent" class="fixed inset-y-0 left-0 w-72 bg-white shadow-lg flex flex-col p-5 transform -translate-x-full transition-transform duration-300 ease-in-out">
             
-            <!-- Header Drawer -->
+            <!-- Kepala Panel Drawer -->
             <div class="flex items-center justify-between mb-6 border-b border-gray-100 pb-4">
                 <div class="flex items-center gap-3">
                     <div class="w-8 h-8 bg-[#D3E4DC] rounded-lg flex items-center justify-center text-sm shadow-inner">🛡️</div>
@@ -107,68 +187,53 @@
                         <p class="text-xs text-on-surface-variant">DKI Jakarta</p>
                     </div>
                 </div>
-                <button @click="mobileMenuOpen = false" class="p-2 text-on-surface-variant hover:bg-gray-100 rounded-full">
+                <button id="closeDrawerBtn" type="button" class="p-2 text-on-surface-variant hover:bg-gray-100 rounded-full">
                     <span class="material-symbols-outlined">close</span>
                 </button>
             </div>
 
-            <!-- List Menu Navigasi Mobile -->
-            <nav class="flex-grow space-y-1 overflow-y-auto pr-1">
-                <a class="block p-3 font-semibold text-primary bg-[#e8f0ec] rounded-lg transition-colors" href="index.html">Beranda</a>
+            <!-- Daftar Tautan Navigasi Utama Mobile -->
+            <nav class="flex-grow space-y-1.5 overflow-y-auto pr-1">
+                <a class="block p-3 font-semibold text-primary bg-[#e8f0ec] rounded-lg" href="index.html">Beranda</a>
                 
-                <!-- 1. Dropdown Profil PD Mobile -->
-                <div x-data="{ open: false }">
-                    <button @click="open = !open" class="w-full flex items-center justify-between p-3 font-semibold text-gray-700 hover:bg-gray-50 rounded-lg">
-                        <span>Profil PD</span>
-                        <svg class="w-4 h-4 transform transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
-                    <div x-show="open" x-transition class="pl-4 space-y-1 bg-gray-50 rounded-lg py-1 mt-1">
-                        <a href="profilpimpinan.html" class="block px-3 py-2 text-sm text-gray-600 hover:text-emerald-900 hover:font-medium">Profil Pimpinan</a>
-                        <a href="sejarah.html" class="block px-3 py-2 text-sm text-gray-600 hover:text-emerald-900 hover:font-medium">Sejarah</a>
-                        <a href="struktur.html" class="block px-3 py-2 text-sm text-gray-600 hover:text-emerald-900 hover:font-medium">Struktur Organisasi</a>
-                        <a href="visimisi.html" class="block px-3 py-2 text-sm text-gray-600 hover:text-emerald-900 hover:font-medium">Visi & Misi</a>
-                        <a href="tugasfungsi.html" class="block px-3 py-2 text-sm text-gray-600 hover:text-emerald-900 hover:font-medium">Tugas & Fungsi</a>
-                    </div>
+                <!-- Sub Menu Profil PD (Langsung di-breakdown agar ramah jempol & bebas error klik) -->
+                <div class="border-l-2 border-emerald-100 pl-2 my-2 space-y-1">
+                    <span class="block px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-gray-400">Profil Satuan</span>
+                    <a href="profilpimpinan.html" class="block p-2.5 pl-4 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg">Profil Pimpinan</a>
+                    <a href="sejarah.html" class="block p-2.5 pl-4 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg">Sejarah</a>
+                    <a href="struktur.html" class="block p-2.5 pl-4 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg">Struktur Organisasi</a>
+                    <a href="visimisi.html" class="block p-2.5 pl-4 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg">Visi & Misi</a>
+                    <a href="tugasfungsi.html" class="block p-2.5 pl-4 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg">Tugas & Fungsi</a>
                 </div>
 
-                <!-- 2. Program & Agenda -->
                 <a class="block p-3 font-semibold text-gray-700 hover:bg-gray-50 rounded-lg" href="program.html">Program</a>
                 <a class="block p-3 font-semibold text-gray-700 hover:bg-gray-50 rounded-lg" href="agenda.html">Agenda Pimpinan</a>
-
-                <!-- 3. Dropdown Publikasi Mobile -->
-                <div x-data="{ open: false }">
-                    <button @click="open = !open" class="w-full flex items-center justify-between p-3 font-semibold text-gray-700 hover:bg-gray-50 rounded-lg">
-                        <span>Publikasi</span>
-                        <svg class="w-4 h-4 transform transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
-                    <div x-show="open" x-transition class="pl-4 space-y-1 bg-gray-50 rounded-lg py-1 mt-1">
-                        <a href="berita.html" class="block px-3 py-2 text-sm text-gray-600 hover:text-emerald-900 hover:font-medium">Berita</a>
-                        <a href="detailberita.html" class="block px-3 py-2 text-sm text-gray-600 hover:text-primary">Detail Berita</a>
-                    </div>
+                
+                <!-- Sub Menu Publikasi -->
+                <div class="border-l-2 border-emerald-100 pl-2 my-2 space-y-1">
+                    <span class="block px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-gray-400">Media & Publikasi</span>
+                    <a class="block p-2.5 pl-4 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg" href="berita.html">Berita Terkini</a>
+                    <a class="block p-2.5 pl-4 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg" href="detailberita.html">Detail Berita</a>
                 </div>
 
-                <!-- 4. Dropdown Dokumentasi Mobile -->
-                <div x-data="{ open: false }">
-                    <button @click="open = !open" class="w-full flex items-center justify-between p-3 font-semibold text-gray-700 hover:bg-gray-50 rounded-lg">
-                        <span>Dokumentasi</span>
-                        <svg class="w-4 h-4 transform transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
-                    <div x-show="open" x-transition class="pl-4 space-y-1 bg-gray-50 rounded-lg py-1 mt-1">
-                        <a href="galerikegiatan.html" class="block px-3 py-2 text-sm text-gray-600 hover:text-emerald-900 hover:font-medium">Galeri Foto</a>
-                        <a href="video.html" class="block px-3 py-2 text-sm text-gray-600 hover:text-emerald-900 hover:font-medium">Video Kegiatan</a>
-                    </div>
+                <!-- Sub Menu Dokumentasi -->
+                <div class="border-l-2 border-emerald-100 pl-2 my-2 space-y-1">
+                    <span class="block px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-gray-400">Dokumentasi</span>
+                    <a class="block p-2.5 pl-4 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg" href="galerikegiatan.html">Galeri Foto</a>
+                    <a class="block p-2.5 pl-4 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg" href="video.html">Video Kegiatan</a>
                 </div>
 
-                <!-- 5. Tombol Saran & Kritik Mobile -->
-                <a href="sarandankritik.html" class="block p-3 mt-6 text-center font-semibold text-white bg-[#557B67] hover:bg-[#436252] rounded-lg shadow-sm transition-colors">
+                <!-- Tombol Utama Pengaduan / Saran -->
+                <a href="sarandankritik.html" class="block p-3 mt-6 text-center font-semibold text-white bg-[#557B67] hover:bg-[#436252] rounded-xl shadow-sm transition-colors">
                     Saran & Kritik
                 </a>
             </nav>
         </div>
     </div>
 
-    <!-- MAIN Halaman -->
+    <!-- MAIN HALAMAN -->
     <main>
+        <!-- Slideshow / Carousel Banner -->
         <section class="relative w-full overflow-hidden group">
             <div class="flex carousel-container overflow-x-auto snap-x snap-mandatory" id="carousel">
                 <div class="w-full shrink-0 snap-center relative h-[600px] md:h-[700px]">
@@ -179,14 +244,15 @@
                     </div>
                 </div>
             </div>
-            <button class="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 text-white/50 hover:text-white transition-colors" id="prevBtn">
+            <button type="button" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 text-white/50 hover:text-white transition-colors" id="prevBtn">
                 <span class="material-symbols-outlined text-[48px]">chevron_left</span>
             </button>
-            <button class="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2 text-white/50 hover:text-white transition-colors" id="nextBtn">
+            <button type="button" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2 text-white/50 hover:text-white transition-colors" id="nextBtn">
                 <span class="material-symbols-outlined text-[48px]">chevron_right</span>
             </button>
         </section>
 
+        <!-- Ringkasan Markas Digital -->
         <section class="relative h-[600px] overflow-hidden">
             <div class="relative z-10 max-w-container-max mx-auto px-6 md:px-margin-desktop flex flex-col justify-center h-full">
                 <div class="max-w-2xl bg-white/95 backdrop-blur-md p-8 rounded shadow-xl border border-white/40">
@@ -203,6 +269,7 @@
             </div>
         </section>
 
+        <!-- Grid Berita & Agenda -->
         <section class="py-20 px-6 md:px-margin-desktop max-w-container-max mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="md:col-span-2 bg-white p-6 md:p-10 rounded border border-outline-variant flex flex-col justify-between group hover:border-primary transition-colors cursor-pointer shadow-sm">
@@ -299,26 +366,65 @@
         </div>
     </footer>
 
-    <!-- CAROUSEL SCRIPT -->
+    <!-- STABIL PURE JAVASCRIPT CONTROLLER -->
     <script>
+        // DOM Element untuk Navigasi Mobile Drawer
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const closeDrawerBtn = document.getElementById('closeDrawerBtn');
+        const drawerBackdrop = document.getElementById('drawerBackdrop');
+        const mobileDrawer = document.getElementById('mobileDrawer');
+        const drawerContent = document.getElementById('drawerContent');
+
+        // Event Pembukaan Menu Mobile (Slide in)
+        if (hamburgerBtn && mobileDrawer && drawerContent) {
+            hamburgerBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                mobileDrawer.classList.remove('hidden');
+                // Menggunakan sedikit delay agar efek transisi CSS slide bekerja dengan baik
+                setTimeout(() => {
+                    drawerContent.classList.remove('-translate-x-full');
+                }, 20);
+            });
+        }
+
+        // Fungsi Penutupan Menu Mobile (Slide out)
+        function closeMobileMenu() {
+            if (mobileDrawer && drawerContent) {
+                drawerContent.classList.add('-translate-x-full');
+                setTimeout(() => {
+                    mobileDrawer.classList.add('hidden');
+                }, 300); // Waktu penyembunyian sinkron dengan durasi transisi (duration-300)
+            }
+        }
+
+        // Event listener untuk penutupan drawer
+        if (closeDrawerBtn) closeDrawerBtn.addEventListener('click', closeMobileMenu);
+        if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeMobileMenu);
+
+        // --- SISTEM CAROUSEL SCRIPT ---
         const carousel = document.getElementById('carousel');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
         let currentSlide = 0;
         const totalSlides = carousel ? carousel.children.length : 1;
 
-        if(totalSlides > 1) {
-            prevBtn?.addEventListener('click', () => {
-                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-                carousel.scrollTo({ left: carousel.offsetWidth * currentSlide, behavior: 'smooth' });
-            });
-            nextBtn?.addEventListener('click', () => {
-                currentSlide = (currentSlide + 1) % totalSlides;
-                carousel.scrollTo({ left: carousel.offsetWidth * currentSlide, behavior: 'smooth' });
-            });
+        if (totalSlides > 1) {
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                    carousel.scrollTo({ left: carousel.offsetWidth * currentSlide, behavior: 'smooth' });
+                });
+            }
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    currentSlide = (currentSlide + 1) % totalSlides;
+                    carousel.scrollTo({ left: carousel.offsetWidth * currentSlide, behavior: 'smooth' });
+                });
+            }
         } else {
-            if(prevBtn) prevBtn.style.display = 'none';
-            if(nextBtn) nextBtn.style.display = 'none';
+            if (prevBtn) prevBtn.style.display = 'none';
+            if (nextBtn) nextBtn.style.display = 'none';
         }
     </script>
 </body>
+</html>
