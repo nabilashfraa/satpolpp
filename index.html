@@ -36,10 +36,10 @@
                 "brand-highlight": "#1b4332"
             },
             "borderRadius": {
-                "DEFAULT": "0.375rem",
-                "lg": "0.5rem",
-                "xl": "0.75rem",
-                "full": "9999px"
+                "DEFAULT": "0.25rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
             },
             "spacing": {
                 "container-max": "1280px",
@@ -52,7 +52,14 @@
                 "stack-lg": "32px"
             },
             "fontFamily": {
-                "sans": ["Inter", "sans-serif"]
+                "sans": ["Inter", "sans-serif"],
+                "headline-xl": ["Inter"],
+                "headline-lg": ["Inter"],
+                "headline-md": ["Inter"],
+                "body-lg": ["Inter"],
+                "body-md": ["Inter"],
+                "label-md": ["Inter"],
+                "label-sm": ["Inter"]
             }
           }
         }
@@ -63,6 +70,9 @@
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
             display: inline-block;
             vertical-align: middle;
+        }
+        .transition-drawer {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         body {
             font-family: 'Inter', sans-serif;
@@ -79,12 +89,10 @@
 </head>
 <body class="text-on-surface" x-data="{ mobileMenuOpen: false }">
 
-    <!-- HEADER / NAVIGATION -->
     <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 
-                <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center space-x-3">
                     <div class="w-10 h-10 bg-[#D3E4DC] rounded-xl flex items-center justify-center text-[#2D4339] font-bold shadow-inner">
                         🛡️
@@ -95,17 +103,15 @@
                     </div>
                 </div>
 
-                <!-- Desktop Navigation -->
                 <nav class="hidden lg:flex space-x-1">
                     <a href="index.html" class="px-3 py-2 rounded-lg text-sm font-medium text-emerald-800 bg-[#e8f0ec]">Beranda</a>
                     
-                    <!-- Profil PD Dropdown -->
-                    <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                    <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave.mouse="open = false">
                         <button class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50 flex items-center space-x-1">
                             <span>Profil PD</span>
                             <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
-                        <div x-show="open" x-transition class="absolute left-0 w-56 pt-2 z-50">
+                        <div x-show="open" x-transition @mouseleave="open = false" class="absolute left-0 w-56 pt-2 z-50">
                             <div class="bg-white border border-gray-100 rounded-xl shadow-lg py-2">
                                 <a href="profilpimpinan.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Profil Pimpinan</a>
                                 <a href="sejarah.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Sejarah</a>
@@ -119,13 +125,12 @@
                     <a href="program.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50">Program</a>
                     <a href="agenda.html" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50">Agenda Pimpinan</a>
 
-                    <!-- Publikasi Dropdown -->
-                    <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                    <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave.mouse="open = false">
                         <button class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50 flex items-center space-x-1">
                             <span>Publikasi</span>
                             <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
-                        <div x-show="open" x-transition class="absolute left-0 w-48 pt-2 z-50">
+                        <div x-show="open" x-transition @mouseleave="open = false" class="absolute left-0 w-48 pt-2 z-50">
                             <div class="bg-white border border-gray-100 rounded-xl shadow-lg py-2">
                                 <a href="berita.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Berita</a>
                                 <a href="detailberita.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Detail Berita</a>
@@ -133,13 +138,12 @@
                         </div>
                     </div>
 
-                    <!-- Dokumentasi Dropdown -->
-                    <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                    <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave.mouse="open = false">
                         <button class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-900 hover:bg-gray-50 flex items-center space-x-1">
                             <span>Dokumentasi</span>
                             <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
-                        <div x-show="open" x-transition class="absolute left-0 w-48 pt-2 z-50">
+                        <div x-show="open" x-transition @mouseleave="open = false" class="absolute left-0 w-48 pt-2 z-50">
                             <div class="bg-white border border-gray-100 rounded-xl shadow-lg py-2">
                                 <a href="galerikegiatan.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Galeri Foto</a>
                                 <a href="video.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8f0ec] hover:text-emerald-900">Video Kegiatan</a>
@@ -148,36 +152,72 @@
                     </div>
                 </nav>
 
-                <!-- Action Button -->
                 <div class="hidden lg:flex items-center">
                     <a href="sarandankritik.html" class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-medium text-white bg-[#557B67] hover:bg-[#436252] transition-colors shadow-sm">
                         Saran & Kritik
                     </a>
                 </div>
 
-                <!-- Mobile Hamburger Button -->
                 <div class="flex lg:hidden">
                     <button @click="mobileMenuOpen = !mobileMenuOpen" class="inline-flex items-center justify-center p-2 rounded-xl text-gray-500 hover:text-gray-600 hover:bg-gray-100 focus:outline-none">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                            <path x-show="mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            <path x-show="mobileMenuOpen" x-transition stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
                 </div>
             </div>
         </div>
+
+        <div x-show="mobileMenuOpen" x-transition class="lg:hidden border-t border-gray-100 bg-white px-4 pt-2 pb-6 space-y-1 shadow-inner">
+            <a href="index.html" class="block px-3 py-2 rounded-lg text-base font-medium text-emerald-800 bg-[#e8f0ec]">Beranda</a>
+            
+            <div x-data="{ open: false }">
+                <button @click="open = !open" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">
+                    <span>Profil PD</span>
+                    <svg class="w-4 h-4 transform transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div x-show="open" x-transition class="pl-4 space-y-1 mt-1">
+                    <a href="profilpimpinan.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Profil Pimpinan</a>
+                    <a href="sejarah.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Sejarah</a>
+                    <a href="struktur.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Struktur Organisasi</a>
+                    <a href="visimisi.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Visi dan Misi</a>
+                    <a href="tugasfungsi.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Tugas dan Fungsi</a>
+                </div>
+            </div>
+
+            <a href="program.html" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">Program</a>
+            <a href="agenda.html" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">Agenda Pimpinan</a>
+
+            <div x-data="{ open: false }">
+                <button @click="open = !open" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">
+                    <span>Publikasi</span>
+                    <svg class="w-4 h-4 transform transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div x-show="open" x-transition class="pl-4 space-y-1 mt-1">
+                    <a href="berita.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Berita</a>
+                    <a href="detailberita.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Detail Berita</a>
+                </div>
+            </div>
+
+            <div x-data="{ open: false }">
+                <button @click="open = !open" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium text-gray-600 hover:bg-gray-50">
+                    <span>Dokumentasi</span>
+                    <svg class="w-4 h-4 transform transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div x-show="open" x-transition class="pl-4 space-y-1 mt-1">
+                    <a href="galerikegiatan.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Galeri Foto</a>
+                    <a href="video.html" class="block px-3 py-1.5 text-sm text-gray-500 rounded-md hover:bg-gray-50">Video Kegiatan</a>
+                </div>
+            </div>
+
+            <a href="sarandankritik.html" class="block px-3 py-2 rounded-lg text-base font-medium text-white bg-[#557B67] text-center shadow-sm !mt-4">Saran & Kritik</a>
+        </div>
     </header>
 
-    <!-- MOBILE SIDE DRAWER (Unified Component) -->
-    <div class="fixed inset-0 z-[200] lg:hidden" x-show="mobileMenuOpen" x-transition>
-        <!-- Backdrop Overlay -->
-        <div class="fixed inset-0 bg-black/50 transition-opacity" @click="mobileMenuOpen = false"></div>
-
-        <!-- Drawer Content -->
-        <div class="fixed inset-y-0 left-0 w-72 bg-white shadow-lg flex flex-col p-4 transform transition-transform duration-300"
-             :class="mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'">
-            
-            <div class="flex items-center justify-between mb-6">
+    <div class="fixed inset-y-0 left-0 z-[200] w-72 bg-white shadow-lg transform transition-drawer flex flex-col lg:hidden" :class="mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'" id="side-drawer">
+        <div class="p-4 flex flex-col h-full">
+            <div class="flex items-center justify-between mb-8">
                 <div class="flex items-center gap-3">
                     <img alt="Logo" class="w-10 h-10 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhczW5yaw6op0_uge0bp8nM10Qa4fQgFa7q3Po_UzPpGbI-jCBvox1DXSf7a2sm8oveBJ2MmEtPJ-xvi__ee9qufPpwcs6hF8K1Ac4wcp5rLiQ7GvfI4uwrDjdQ-MMPqj7Zav-A9YfI2PLF6YW2ie0f1yI-0vAmHhPeKFB5iM0TKmy-u_NUZmY-M9V3L83m2bfoKwSjCeN-66DWSXVWj0PvK114SjGB4abVByEEaJzhjl3UybUJc0oT7LlqZWAMTVTjsyK7ejkd6g"/>
                     <div>
@@ -185,76 +225,33 @@
                         <p class="text-xs text-on-surface-variant">DKI Jakarta</p>
                     </div>
                 </div>
-                <button @click="mobileMenuOpen = false" class="p-2 text-on-surface-variant hover:bg-gray-100 rounded-full">
+                <button @click="mobileMenuOpen = false" class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors" id="drawer-close">
                     <span class="material-symbols-outlined">close</span>
                 </button>
             </div>
-
-            <!-- Mobile Navigation Links -->
-            <nav class="flex-grow space-y-1 overflow-y-auto">
-                <a class="block p-3 font-semibold text-primary bg-[#e8f0ec] rounded-lg" href="index.html">Beranda</a>
-                
-                <!-- Profil Mobile Dropdown -->
-                <div x-data="{ open: false }">
-                    <button @click="open = !open" class="w-full flex items-center justify-between p-3 font-semibold text-on-surface hover:bg-gray-50 rounded-lg">
-                        <span>Profil PD</span>
-                        <svg class="w-4 h-4 transform transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
-                    <div x-show="open" x-transition class="pl-4 space-y-1 bg-gray-50 rounded-lg py-1">
-                        <a href="profilpimpinan.html" class="block px-3 py-2 text-sm text-gray-600 hover:text-primary">Profil Pimpinan</a>
-                        <a href="sejarah.html" class="block px-3 py-2 text-sm text-gray-600 hover:text-primary">Sejarah</a>
-                        <a href="struktur.html" class="block px-3 py-2 text-sm text-gray-600 hover:text-primary">Struktur Organisasi</a>
-                        <a href="visimisi.html" class="block px-3 py-2 text-sm text-gray-600 hover:text-primary">Visi dan Misi</a>
-                        <a href="tugasfungsi.html" class="block px-3 py-2 text-sm text-gray-600 hover:text-primary">Tugas & Fungsi</a>
-                    </div>
-                </div>
-
-                <a class="block p-3 font-semibold text-on-surface hover:bg-gray-50 rounded-lg" href="program.html">Program</a>
-                <a class="block p-3 font-semibold text-on-surface hover:bg-gray-50 rounded-lg" href="agenda.html">Agenda Pimpinan</a>
-
-                <!-- Publikasi Mobile Dropdown -->
-                <div x-data="{ open: false }">
-                    <button @click="open = !open" class="w-full flex items-center justify-between p-3 font-semibold text-on-surface hover:bg-gray-50 rounded-lg">
-                        <span>Publikasi</span>
-                        <svg class="w-4 h-4 transform transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
-                    <div x-show="open" x-transition class="pl-4 space-y-1 bg-gray-50 rounded-lg py-1">
-                        <a href="berita.html" class="block px-3 py-2 text-sm text-gray-600 hover:text-primary">Berita</a>
-                        <a href="detailberita.html" class="block px-3 py-2 text-sm text-gray-600 hover:text-primary">Detail Berita</a>
-                    </div>
-                </div>
-
-                <!-- Dokumentasi Mobile Dropdown -->
-                <div x-data="{ open: false }">
-                    <button @click="open = !open" class="w-full flex items-center justify-between p-3 font-semibold text-on-surface hover:bg-gray-50 rounded-lg">
-                        <span>Dokumentasi</span>
-                        <svg class="w-4 h-4 transform transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
-                    <div x-show="open" x-transition class="pl-4 space-y-1 bg-gray-50 rounded-lg py-1">
-                        <a href="galerikegiatan.html" class="block px-3 py-2 text-sm text-gray-600 hover:text-primary">Galeri Foto</a>
-                        <a href="video.html" class="block px-3 py-2 text-sm text-gray-600 hover:text-primary">Video Kegiatan</a>
-                    </div>
-                </div>
-
-                <a href="sarandankritik.html" class="block p-3 mt-4 text-center font-semibold text-white bg-[#557B67] hover:bg-[#436252] rounded-lg shadow-sm">Saran & Kritik</a>
+            <nav class="flex-grow space-y-2 overflow-y-auto">
+                <a class="block p-3 font-semibold text-primary bg-surface-container rounded-lg" href="index.html">Beranda</a>
+                <a class="block p-3 font-semibold text-on-surface hover:bg-surface-container-low rounded-lg" href="profilpimpinan.html">Profil</a>
+                <a class="block p-3 font-semibold text-on-surface hover:bg-surface-container-low rounded-lg" href="tugasfungsi.html">Tugas & Fungsi</a>
+                <a class="block p-3 font-semibold text-on-surface hover:bg-surface-container-low rounded-lg" href="berita.html">Berita</a>
+                <a class="block p-3 font-semibold text-on-surface hover:bg-surface-container-low rounded-lg" href="#">Publikasi</a>
+                <a class="block p-3 font-semibold text-on-surface hover:bg-surface-container-low rounded-lg" href="sarandankritik.html">Saran dan Kritik</a>
             </nav>
         </div>
     </div>
+    
+    <div class="fixed inset-0 bg-black/50 z-[190] transition-opacity duration-300 lg:hidden" x-show="mobileMenuOpen" @click="mobileMenuOpen = false" x-transition></div>
 
-    <!-- MAIN CONTENT -->
     <main>
-        <!-- Carousel Section -->
         <section class="relative w-full overflow-hidden group">
             <div class="flex carousel-container overflow-x-auto snap-x snap-mandatory" id="carousel">
-                <!-- Slide 1 -->
                 <div class="w-full shrink-0 snap-center relative h-[600px] md:h-[700px]">
                     <img alt="Patroli" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnlh6S3-ODCqMd9YEwputmTv8hBHNmSlFp7HPUHLZwJZ62tDaw0EoohAauh7OvFWKCW8om3gMVHx8AM2qjCuwaRaL8Cj8vVqJ0JznknD96zpUIHIIhp44zibJiUT1xtJQk7eFcm8pf9GeFM_HrW9Zci_TtPC-WHeUKvn5CjSOEHY94FnypKaMAY7FOq94itAd9yfWI3gQ8uKHgbN5S9bzxEJTR-2VllhkT_Dwn7bhNSNuCsw8Khqd2aniqpkhO5c8nRh3Y_kbpkbo"/>
                     <div class="absolute inset-0 bg-black/60 flex flex-col items-center justify-center text-center px-4">
-                        <h1 class="text-white text-[42px] md:text-[56px] font-bold mb-4 max-w-4xl leading-tight">Selamat datang di website utama Satpol PP</h1>
+                        <h1 class="text-white text-[48px] md:text-[56px] font-bold mb-4 max-w-4xl leading-tight">Selamat datang di website utama Satpol PP</h1>
                         <p class="text-white text-[18px] md:text-[24px] opacity-90 max-w-3xl">Garda Terdepan Penegak Perda dan Penyelenggara Ketertiban Umum di Jakarta</p>
                     </div>
                 </div>
-                <!-- Anda bisa menduplikasi blok Slide di atas jika ingin menambah slide gambar -->
             </div>
             <button class="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 text-white/50 hover:text-white transition-colors" id="prevBtn">
                 <span class="material-symbols-outlined text-[48px]">chevron_left</span>
@@ -264,12 +261,11 @@
             </button>
         </section>
 
-        <!-- Hero / Digital HQ Info -->
         <section class="relative h-[600px] overflow-hidden">
-            <div class="relative z-10 max-w-container-max mx-auto px-6 md:px-margin-desktop flex flex-col justify-center h-full">
-                <div class="max-w-2xl bg-white/95 backdrop-blur-md p-8 md:p-stack-lg rounded shadow-xl border border-white/40">
-                    <h1 class="text-[36px] md:text-[48px] font-bold mb-4 text-primary leading-tight">Markas Digital Satpol PP DKI Jakarta</h1>
-                    <p class="text-[16px] md:text-[18px] mb-8 text-on-surface-variant">Menjaga ketenteraman dan ketertiban umum melalui tata kelola yang profesional, transparan, dan berbasis teknologi.</p>
+            <div class="relative z-10 max-w-container-max mx-auto px-margin-desktop flex flex-col justify-center h-full">
+                <div class="max-w-2xl bg-white/95 backdrop-blur-md p-stack-lg rounded shadow-xl border border-white/40">
+                    <h1 class="text-[48px] font-bold mb-4 text-primary">Markas Digital Satpol PP DKI Jakarta</h1>
+                    <p class="text-[18px] mb-8 text-on-surface-variant">Menjaga ketenteraman dan ketertiban umum melalui tata kelola yang profesional, transparan, dan berbasis teknologi.</p>
                     <div class="flex flex-wrap gap-4">
                         <button class="bg-primary text-white px-8 py-3 rounded font-semibold hover:opacity-90 transition-all shadow-md">Pelayanan Publik</button>
                         <button class="border-2 border-primary text-primary px-8 py-3 rounded font-semibold hover:bg-primary hover:text-white transition-all">Lihat Agenda</button>
@@ -281,13 +277,12 @@
             </div>
         </section>
 
-        <!-- Features Grid -->
-        <section class="py-20 px-6 md:px-margin-desktop max-w-container-max mx-auto">
+        <section class="py-20 px-margin-desktop max-w-container-max mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="md:col-span-2 bg-white p-6 md:p-10 rounded border border-outline-variant flex flex-col justify-between group hover:border-primary transition-colors cursor-pointer shadow-sm">
+                <div class="md:col-span-2 bg-white p-10 rounded border border-outline-variant flex flex-col justify-between group hover:border-primary transition-colors cursor-pointer shadow-sm">
                     <div>
                         <span class="text-primary text-[12px] font-bold uppercase tracking-widest mb-4 block">Fokus Utama</span>
-                        <h3 class="text-[28px] md:text-[32px] font-bold mb-4 text-primary">Integrasi Laporan Masyarakat Jakarta</h3>
+                        <h3 class="text-[32px] font-bold mb-4 text-primary">Integrasi Laporan Masyarakat Jakarta</h3>
                         <p class="text-[16px] text-on-surface-variant mb-6">Pantau setiap tindakan penertiban secara real-time dan berikan kontribusi untuk kota yang lebih tertib.</p>
                     </div>
                     <div class="h-48 rounded overflow-hidden relative border border-outline-variant">
@@ -295,14 +290,14 @@
                     </div>
                 </div>
                 <div class="flex flex-col gap-6">
-                    <div class="bg-primary text-white p-8 rounded min-h-[180px] flex flex-col justify-center relative overflow-hidden shadow-md">
+                    <div class="bg-primary text-white p-8 rounded h-1/2 flex flex-col justify-center relative overflow-hidden shadow-md">
                         <h4 class="text-[24px] font-bold mb-2 relative z-10">Agenda Hari Ini</h4>
                         <p class="text-[14px] opacity-90 relative z-10">Penertiban kawasan Sudirman & Thamrin mulai pukul 09:00 WIB.</p>
                         <div class="absolute bottom-[-20px] right-[-20px] opacity-10">
                             <span class="material-symbols-outlined text-[120px]">calendar_today</span>
                         </div>
                     </div>
-                    <div class="bg-surface-container-high p-8 rounded min-h-[180px] flex flex-col justify-center border border-outline-variant hover:border-primary transition-all cursor-pointer shadow-sm group">
+                    <div class="bg-surface-container-high p-8 rounded h-1/2 flex flex-col justify-center border border-outline-variant hover:border-primary transition-all cursor-pointer shadow-sm group">
                         <div class="flex items-center justify-between mb-4">
                             <span class="material-symbols-outlined text-primary text-[40px] group-hover:opacity-80 transition-opacity">security</span>
                             <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-[12px] font-bold">AKTIF</span>
@@ -315,8 +310,7 @@
         </section>
     </main>
 
-    <!-- FOOTER -->
-    <footer class="bg-primary text-white py-16 px-6 md:px-margin-desktop mt-20">
+    <footer class="bg-primary text-white py-16 px-margin-desktop mt-20">
         <div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
             <div class="flex flex-col gap-6">
                 <div class="flex items-center gap-3">
@@ -335,7 +329,7 @@
                     <a class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-all" href="#"><span class="material-symbols-outlined text-[18px]">face_nod</span></a>
                 </div>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-12 w-full md:w-auto">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-12">
                 <div>
                     <h5 class="font-bold text-[14px] mb-6 border-b-2 border-white/20 pb-2">Layanan</h5>
                     <ul class="text-[13px] space-y-3 text-white/80">
@@ -354,7 +348,7 @@
                         <li><a class="hover:text-white transition-colors" href="#">Siaran Pers</a></li>
                     </ul>
                 </div>
-                <div class="col-span-2 md:col-span-1">
+                <div>
                     <h5 class="font-bold text-[14px] mb-6 border-b-2 border-white/20 pb-2">Kontak</h5>
                     <ul class="text-[13px] space-y-4 text-white/80">
                         <li class="flex items-center gap-2">
@@ -370,7 +364,7 @@
             </div>
         </div>
         <div class="max-w-container-max mx-auto mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-[12px] text-white/60">&copy; 2026 Satuan Polisi Pamong Praja DKI Jakarta. Seluruh Hak Cipta Dilindungi.</p>
+            <p class="text-[12px] text-white/60">© 2024 Satuan Polisi Pamong Praja DKI Jakarta. Seluruh Hak Cipta Dilindungi.</p>
             <div class="flex gap-6">
                 <a class="text-[12px] text-white/60 hover:text-white transition-colors" href="#">Kebijakan Privasi</a>
                 <a class="text-[12px] text-white/60 hover:text-white transition-colors" href="#">Peta Situs</a>
@@ -378,31 +372,22 @@
         </div>
     </footer>
 
-    <!-- JAVASCRIPT FIXED FOR CAROUSEL -->
     <script>
         const carousel = document.getElementById('carousel');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
         let currentSlide = 0;
-        
-        // Menghitung jumlah slide secara otomatis berdasarkan isi div #carousel
-        const totalSlides = carousel ? carousel.children.length : 1;
+        const totalSlides = 1;
 
-        if(totalSlides > 1) {
-            prevBtn?.addEventListener('click', () => {
-                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-                carousel.scrollTo({ left: carousel.offsetWidth * currentSlide, behavior: 'smooth' });
-            });
+        prevBtn?.addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            carousel.scrollTo({ left: carousel.offsetWidth * currentSlide, behavior: 'smooth' });
+        });
 
-            nextBtn?.addEventListener('click', () => {
-                currentSlide = (currentSlide + 1) % totalSlides;
-                carousel.scrollTo({ left: carousel.offsetWidth * currentSlide, behavior: 'smooth' });
-            });
-        } else {
-            // Sembunyikan tombol navigasi jika slide hanya 1
-            if(prevBtn) prevBtn.style.display = 'none';
-            if(nextBtn) nextBtn.style.display = 'none';
-        }
+        nextBtn?.addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            carousel.scrollTo({ left: carousel.offsetWidth * currentSlide, behavior: 'smooth' });
+        });
     </script>
 </body>
 </html>
